@@ -42,7 +42,8 @@ export default function MyDrawer() {
           drawerIcon: ({color}) => (
             <Ionicons name="home-outline" size={22} color={color} />
           ),
-          headerShown:false
+          headerShown:false,
+          swipeEnabled: false 
         }}
        
       />

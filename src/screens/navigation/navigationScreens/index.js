@@ -6,6 +6,7 @@ import Course from '../../Course';
 import HomeScreen from '../../Home';
 import Category from '../../Category';
 import COLORS from '../../../config/colors';
+import Description from '../../Description';
 
 const Stack = createNativeStackNavigator();
 const NavigationScreens = () => {
@@ -29,6 +30,10 @@ const NavigationScreens = () => {
       <Stack.Screen
         name="Course"
         component={Course}
+      />
+      <Stack.Screen
+        name="Description"
+        component={Description}
       />
     </Stack.Navigator>
   );

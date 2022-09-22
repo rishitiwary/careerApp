@@ -6,9 +6,6 @@ import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 
- 
- 
-
 const Course = ({route}) => {
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
@@ -26,7 +23,13 @@ const Course = ({route}) => {
 
     setData(result.data);
   };
-
+const handleClick=(item)=>{
+  let video =item.video;
+  let description =item.description;
+   navigation.navigate('Description',{
+     video,description
+   });
+}
   useEffect(() => {
     navigation.setOptions({title: route.params.courseName});
     handleFetchData();
@@ -45,7 +48,7 @@ const Course = ({route}) => {
         <FlatList
           data={getData.data}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={() => handleClick(item)}>
+           
               <View style={[styles.card, styles.elevation]}>
                 <View style={styles.row}>
                   <View style={styles.image}>
@@ -83,14 +86,14 @@ const Course = ({route}) => {
                       <Text style={{color: 'white'}}>Buy Now</Text>
                     </View>
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleClick(item)}>
                     <View style={styles.demo}>
                       <Text style={{color: 'white'}}>See Demo</Text>
                     </View>
                   </TouchableOpacity>
                 </View>
               </View>
-            </TouchableOpacity>
+            
           )}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
