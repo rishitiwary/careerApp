@@ -46,11 +46,13 @@ export default {
     justifyContent: 'space-evenly',
     paddingVertical: 10,
     
+    
   },
   bottomText: {
     color: COLORS.white,
   },
   bottomIcon:{
+    
     alignItems: 'center',
     justifyContent:'center',
   

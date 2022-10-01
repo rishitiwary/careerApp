@@ -132,9 +132,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   row: {
-    flex: 1,
-    flexDirection: 'row',
-    marginVertical: 0,
+    flex: 0.68,
+    backgroundColor: 'black',
   },
 
   description2: {
@@ -179,11 +178,24 @@ const styles = StyleSheet.create({
   hideShare: {
     top: 0,
     margin: 0,
-    height: 50,
+    height: 60,
     width: '100%',
     position: 'absolute',
-    opacity: 0.7,
-    zIndex: 0,
+  },
+  hideSharefullScreen: {
+    top: 0,
+    margin: 0,
+    height: 60,
+    width: '100%',
+    position: 'absolute',
+  },
+  fullscreen: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  fullscreenVideo: {
+    marginVertical: 240,
+    flex: 1,
   },
 });
 export default styles;

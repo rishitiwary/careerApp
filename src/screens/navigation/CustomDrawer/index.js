@@ -41,7 +41,7 @@ const CustomDrawer=(props)=>{
 
   </TouchableOpacity>
 
-  <TouchableOpacity onPress={singOut} style={{paddingVertical:15}} >
+  <TouchableOpacity  style={{paddingVertical:15}} >
 <View style={{flexDirection:'row',alignItems:'center' }}>
 
   <Ionicons name="share-social-outline" size={22} color="black"/>

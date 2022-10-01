@@ -1,8 +1,7 @@
 import COLORS from '../../config/colors';
 import {Dimensions, StyleSheet, Platform} from 'react-native';
-const {height,width} = Dimensions.get('screen');
+const {height} = Dimensions.get('screen');
 const height_logo = height * 0.1;
-
 const styles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
@@ -26,9 +25,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    paddingTop: 20,
-    color: '#fff',
-    fontSize: 25,
+    color: COLORS.dark,
   },
 
   header: {
@@ -36,21 +33,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  footer: {
-    flex: 3,
-    minWidth:'100%'
-  
-    
-  },
-  input: {
-    borderColor: COLORS.primary,
-    borderRadius: 2,
-  },
+
   title: {
-    color: '#05375a',
     fontSize: 24,
     fontWeight: 'bolder',
     marginTop: -20,
+    color: COLORS.dark,
   },
 
   button: {
@@ -118,54 +106,95 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   card: {
-    flex: 1,
-   margin:5,
-    width: Dimensions.get('window').width /1.03,
-    height: Dimensions.get('window').height / 2.5,
-    borderRadius: 10,
-    backgroundColor:COLORS.white,
-    
-  },
-  cardText: {
-    fontSize: 18,
-    fontWeight:'bold',
-    color: 'red',
-    marginVertical:20,
-    marginHorizontal:10,
-    justifyContent:'flex-start',
-
-  },
-  image:{
-   paddingHorizontal:10,
-   paddingVertical:15,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    padding: 10,
     width: Dimensions.get('window').width / 1.1,
-    height: Dimensions.get('window').height / 3.5,
-    borderRadius:5  
+    height: Dimensions.get('window').height / 2.3,
+    borderRadius: 10,
+    backgroundColor: COLORS.white,
   },
-  elevation: {  
-    shadowColor: '#52006A',  
-    elevation: 10,  
-  },  
-  headerBanner: {
-    flex: 0.4,
-    width:width,
-    backgroundColor:COLORS.bgColor,
  
+  image: {
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+    width: Dimensions.get('window').width / 1.2,
+    height: Dimensions.get('window').height / 5,
+    borderRadius:5
   },
-  headerText: {
-    flex:2,
-    color:COLORS.white,
-    marginVertical:20,
-    paddingHorizontal:10,
-    fontSize:20,
-    fontWeight:'bold'
- 
+  elevation: {
+    shadowColor: '#52006A',
+    elevation: 4,
   },
-  descriptionText:{
+  row: {
+    flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
    
-    fontSize:14,
-    color:COLORS.dark
+  
+  },
+
+  description2: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginLeft: Dimensions.get('window').width / 2.9,
+    marginTop: 30,
+  },
+  description3: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    paddingHorizontal: 5,
+    color: COLORS.dark,
+  },
+  descriptionText: {
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    fontSize: 12,
+    color: COLORS.dark,
+  },
+  strike: {
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
+  },
+  buynow: {
+ height:40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.bgColor,
+    width: Dimensions.get('window').width / 2.5,
+    borderRadius: 6,
+    minHeight:40,
+    
+  },
+  demo: {
+    height:40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.primary,
+    width: Dimensions.get('window').width / 2.5,
+    borderRadius: 6,
+    minHeight:40,
+  },
+  courseTile: {
+    marginVertical: 5,
+    justifyContent: 'space-evenly',
+    alignContent: 'flex-start',
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 80,
   },
 });
 export default styles;

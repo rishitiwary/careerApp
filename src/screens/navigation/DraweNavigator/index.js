@@ -2,9 +2,11 @@ import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 // import BottomNavigator from '../BottomNavigator';
 import SettingScreen from '../../Settings';
-import ProfileScreen from '../../Profile';
+import EditProfile from '../../Editprofile';
+import ChangePassword from '../../ChangePassword';
+import Faq from '../../Faq';
+import AboutUs from '../../Aboutus';
 import CustomDrawer from '../CustomDrawer';
-import HomeScreen from '../../Home';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import COLORS from '../../../config/colors';
 const Drawer = createDrawerNavigator();
@@ -13,7 +15,7 @@ export default function MyDrawer() {
   
   return (
      
-    <Drawer.Navigator
+    <Drawer.Navigator 
       drawerContent={props => <CustomDrawer {...props} />}
       initialRouteName="HomeScreen"
       
@@ -28,9 +30,11 @@ export default function MyDrawer() {
         },
         headerStyle: {
           backgroundColor: COLORS.bgColor,
+          
         },
         headerTintColor: '#fff',
-         
+        headerShown:false,
+        swipeEnabled: false 
       }}>
         
       <Drawer.Screen
@@ -41,29 +45,49 @@ export default function MyDrawer() {
           title: 'Home',
           drawerIcon: ({color}) => (
             <Ionicons name="home-outline" size={22} color={color} />
-          ),
-          headerShown:false,
-          swipeEnabled: false 
+          )
+         
         }}
        
       />
+        
       <Drawer.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Edit Profile"
+        component={EditProfile}
         options={{
-          title: 'Profile',
+          title: 'Edit Profile',
           drawerIcon: ({color}) => (
             <Ionicons name="person-outline" size={22} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
-        name="My Purchase"
-        component={SettingScreen}
+  <Drawer.Screen
+        name="Change Password"
+        component={ChangePassword}
         options={{
-          title: 'My Purchase',
+          title: 'Change Password',
           drawerIcon: ({color}) => (
-            <Ionicons name="cart-outline" size={22} color={color} />
+            <Ionicons name="person-outline" size={22} color={color} />
+          ),
+        }}
+      />
+       <Drawer.Screen
+        name="Faq"
+        component={Faq}
+        options={{
+          title: 'Faq',
+          drawerIcon: ({color}) => (
+            <Ionicons name="person-outline" size={22} color={color} />
+          ),
+        }}
+      />
+        <Drawer.Screen
+        name="About Us"
+        component={AboutUs}
+        options={{
+          title: 'About Us',
+          drawerIcon: ({color}) => (
+            <Ionicons name="person-outline" size={22} color={color} />
           ),
         }}
       />

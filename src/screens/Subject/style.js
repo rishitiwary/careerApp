@@ -1,8 +1,7 @@
 import COLORS from '../../config/colors';
 import {Dimensions, StyleSheet, Platform} from 'react-native';
-const {height,width} = Dimensions.get('screen');
+const {height} = Dimensions.get('screen');
 const height_logo = height * 0.1;
-
 const styles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
@@ -26,9 +25,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    paddingTop: 20,
-    color: '#fff',
-    fontSize: 25,
+    fontWeight:'bold',
+    paddingTop: 10,
+    color: 'black',
+    fontSize: 14,
   },
 
   header: {
@@ -38,17 +38,14 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    minWidth:'100%'
-  
-    
+    backgroundColor: COLORS.white,
   },
   input: {
     borderColor: COLORS.primary,
     borderRadius: 2,
   },
   title: {
-    color: '#05375a',
-    fontSize: 24,
+    color: 'black',
     fontWeight: 'bolder',
     marginTop: -20,
   },
@@ -119,53 +116,68 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-   margin:5,
-    width: Dimensions.get('window').width /1.03,
-    height: Dimensions.get('window').height / 2.5,
+    flexDirection: 'row',
+    marginBottom: 15,
+    marginRight: 10,
+    marginLeft: 10,
+    padding: 10,
+    width: Dimensions.get('window').width / 2.3,
+    height: Dimensions.get('window').height / 4,
     borderRadius: 10,
     backgroundColor:COLORS.white,
     
   },
   cardText: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight:'bold',
-    color: 'red',
-    marginVertical:20,
-    marginHorizontal:10,
+    color: 'black',
+    marginTop:10,
     justifyContent:'flex-start',
 
   },
   image:{
-   paddingHorizontal:10,
-   paddingVertical:15,
-    width: Dimensions.get('window').width / 1.1,
-    height: Dimensions.get('window').height / 3.5,
-    borderRadius:5  
+    marginHorizontal:10,
+    marginTop:10,
+    width: Dimensions.get('window').width / 3.5,
+    height: Dimensions.get('window').height / 6.8,
   },
   elevation: {  
     shadowColor: '#52006A',  
-    elevation: 10,  
+    elevation: 4,  
   },  
-  headerBanner: {
-    flex: 0.4,
-    width:width,
-    backgroundColor:COLORS.bgColor,
+  row:{
+    flex:1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent:'space-evenly'
+  },
+  card2: {
+    marginHorizontal:10,
+    marginVertical:10,
+       padding: 10,
+       width: Dimensions.get('window').width/1.1,
+       height: Dimensions.get('window').height / 4,
+       borderRadius: 10,
+       backgroundColor:COLORS.white,
+       
+       
+     },
+     buynow:{
  
-  },
-  headerText: {
-    flex:2,
-    color:COLORS.white,
-    marginVertical:20,
-    paddingHorizontal:10,
-    fontSize:20,
-    fontWeight:'bold'
- 
-  },
-  descriptionText:{
-   
-    fontSize:14,
-    color:COLORS.dark
-    
-  },
+      alignItems:'center',
+      justifyContent:'center',
+      backgroundColor:COLORS.bgColor,
+      width:Dimensions.get('window').width / 3,
+      borderRadius:8,
+      height:40,
+     
+    },
+    description3:{
+      flex:1,
+      justifyContent:'flex-start',
+      flexWrap: "wrap",
+      justifyContent:'space-between',
+      marginLeft:Dimensions.get('window').width / 2.5,
+    },
 });
 export default styles;

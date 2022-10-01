@@ -1,8 +1,7 @@
 import COLORS from '../../config/colors';
 import {Dimensions, StyleSheet, Platform} from 'react-native';
-const {height,width} = Dimensions.get('screen');
+const {height} = Dimensions.get('screen');
 const height_logo = height * 0.1;
-
 const styles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
@@ -17,8 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   logo: {
     height: height_logo,
@@ -37,10 +35,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footer: {
-    flex: 3,
-    minWidth:'100%'
-  
-    
+    flex: 1,
+    marginHorizontal:10,
+    justifyContent: 'space-between',
+    marginVertical: 20,
+    backgroundColor: COLORS.white,
   },
   input: {
     borderColor: COLORS.primary,
@@ -119,53 +118,32 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-   margin:5,
-    width: Dimensions.get('window').width /1.03,
-    height: Dimensions.get('window').height / 2.5,
+    flexDirection: 'row',
+    marginBottom: 15,
+    marginRight: 10,
+    marginLeft: 10,
+    padding: 10,
+    width: Dimensions.get('window').width / 2.3,
+    height: Dimensions.get('window').height / 4,
     borderRadius: 10,
-    backgroundColor:COLORS.white,
-    
+    backgroundColor: COLORS.white,
   },
   cardText: {
-    fontSize: 18,
-    fontWeight:'bold',
-    color: 'red',
-    marginVertical:20,
-    marginHorizontal:10,
-    justifyContent:'flex-start',
-
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 10,
+    justifyContent: 'flex-start',
   },
-  image:{
-   paddingHorizontal:10,
-   paddingVertical:15,
-    width: Dimensions.get('window').width / 1.1,
-    height: Dimensions.get('window').height / 3.5,
-    borderRadius:5  
+  image: {
+    marginHorizontal: 10,
+    marginTop: 10,
+    width: Dimensions.get('window').width / 3.5,
+    height: Dimensions.get('window').height / 6.8,
   },
-  elevation: {  
-    shadowColor: '#52006A',  
-    elevation: 10,  
-  },  
-  headerBanner: {
-    flex: 0.4,
-    width:width,
-    backgroundColor:COLORS.bgColor,
- 
-  },
-  headerText: {
-    flex:2,
-    color:COLORS.white,
-    marginVertical:20,
-    paddingHorizontal:10,
-    fontSize:20,
-    fontWeight:'bold'
- 
-  },
-  descriptionText:{
-   
-    fontSize:14,
-    color:COLORS.dark
-    
+  elevation: {
+    shadowColor: '#52006A',
+    elevation: 4,
   },
 });
 export default styles;

@@ -24,13 +24,9 @@ const styles = StyleSheet.create({
     height: height_logo,
     width: height_logo,
   },
-
   text: {
-    paddingTop: 20,
-    color: '#fff',
-    fontSize: 25,
+    color: COLORS.dark,    
   },
-
   header: {
     flex: 0.4,
     justifyContent: 'center',
@@ -38,9 +34,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    minWidth:'100%'
-  
-    
+    backgroundColor: COLORS.white,
   },
   input: {
     borderColor: COLORS.primary,
@@ -118,34 +112,35 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   card: {
-    flex: 1,
-   margin:5,
-    width: Dimensions.get('window').width /1.03,
-    height: Dimensions.get('window').height / 2.5,
-    borderRadius: 10,
-    backgroundColor:COLORS.white,
-    
-  },
-  cardText: {
-    fontSize: 18,
-    fontWeight:'bold',
-    color: 'red',
-    marginVertical:20,
     marginHorizontal:10,
-    justifyContent:'flex-start',
-
-  },
-  image:{
-   paddingHorizontal:10,
-   paddingVertical:15,
-    width: Dimensions.get('window').width / 1.1,
-    height: Dimensions.get('window').height / 3.5,
-    borderRadius:5  
-  },
-  elevation: {  
-    shadowColor: '#52006A',  
-    elevation: 10,  
-  },  
+    marginVertical:10,
+       padding: 10,
+       width: Dimensions.get('window').width/1.1,
+       height: Dimensions.get('window').height / 4,
+       borderRadius: 10,
+       backgroundColor:COLORS.white,
+       
+       
+     },
+     cardText: {
+       fontSize: 17,
+       fontWeight:'bold',
+       color: 'black',
+       marginTop:25,
+       justifyContent:'flex-start',
+   
+     },
+     image:{
+    
+      width: Dimensions.get('window').width / 3,
+      height: Dimensions.get('window').height / 4.6,
+     
+    },
+    elevation: {  
+      shadowColor: '#52006A',  
+      elevation: 4,  
+    },  
+ 
   headerBanner: {
     flex: 0.4,
     width:width,
@@ -161,11 +156,75 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
  
   },
-  descriptionText:{
-   
-    fontSize:14,
-    color:COLORS.dark
+  row:{
+    flex:1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent:'space-between'
+  },
+  description2:{
+    flex:1,
+    alignItems:'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+   marginLeft:Dimensions.get('window').width / 2.9,
+   marginTop:30
+  },
+  description3:{
+    flex:1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent:'space-between',
+    marginLeft:Dimensions.get('window').width / 2.9,
+  },
+  title:{
+    fontSize:15,
+    fontWeight:"bold",
+    paddingHorizontal:5
     
   },
+descriptionText:{
+  paddingVertical:5,
+  paddingHorizontal:5,
+  fontSize:12,
+  color:COLORS.dark
+  
+},
+strike:{
+  textDecorationLine: 'line-through', 
+  textDecorationStyle: 'solid',
+ 
+ 
+},
+buynow:{
+  flex:1,
+  alignItems:'center',
+  justifyContent:'center',
+  backgroundColor:COLORS.bgColor,
+  width:Dimensions.get('window').width / 4,
+  borderRadius:8,
+ 
+},
+demo:{
+  flex:1,
+  alignItems:'center',
+  justifyContent:'center',
+  backgroundColor:COLORS.primary,
+  width:Dimensions.get('window').width / 4,
+  borderRadius:6,
+ 
+},
+courseTile:{
+ marginVertical:5,
+  justifyContent:'space-evenly',
+  alignContent:'flex-start'
+},
+activityIndicator: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: 80
+}
+
 });
 export default styles;

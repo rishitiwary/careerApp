@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "career.app"
-               BlueprintName = "career"
-               ReferencedContainer = "container:career.xcodeproj">
+               BuildableName = "Career.app"
+               BlueprintName = "Career"
+               ReferencedContainer = "container:Career.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "careerTests.xctest"
-               BlueprintName = "careerTests"
-               ReferencedContainer = "container:career.xcodeproj">
+               BuildableName = "CareerTests.xctest"
+               BlueprintName = "CareerTests"
+               ReferencedContainer = "container:Career.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "career.app"
-            BlueprintName = "career"
-            ReferencedContainer = "container:career.xcodeproj">
+            BuildableName = "Career.app"
+            BlueprintName = "Career"
+            ReferencedContainer = "container:Career.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "career.app"
-            BlueprintName = "career"
-            ReferencedContainer = "container:career.xcodeproj">
+            BuildableName = "Career.app"
+            BlueprintName = "Career"
+            ReferencedContainer = "container:Career.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

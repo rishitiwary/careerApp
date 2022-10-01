@@ -15,7 +15,7 @@ export const BottomNavigation=()=>{
 </View>
 </TouchableOpacity>
 
-<TouchableOpacity>
+<TouchableOpacity onPress={()=>navigation.navigate('My Purchased')}>
 <View style={styles.bottomIcon}>
 <FontAwesome name="cart-arrow-down" color={COLORS.white} size={26} />
 <Text style={styles.bottomText}>My Purchased</Text>
@@ -24,8 +24,8 @@ export const BottomNavigation=()=>{
 
 <TouchableOpacity>
 <View style={styles.bottomIcon}>
-<FontAwesome name="user" color={COLORS.white} size={26} />
-<Text style={styles.bottomText}>Profile</Text>
+<FontAwesome name="video-camera" color={COLORS.white} size={26} />
+<Text style={styles.bottomText}>Live</Text>
 </View>
 </TouchableOpacity>
 

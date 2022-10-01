@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import COLORS from '../../../config/colors';
+import MyPurchase from '../../MyPurchase';
 const BottomNavigator = () => {
   return (
     // drawer navigation
@@ -40,7 +41,7 @@ const BottomNavigator = () => {
       />
       <Tab.Screen
         name="My Purchased"
-        component={SettingScreen}
+        component={MyPurchase}
         options={{
           tabBarLabel: 'My Purchased',
           tabBarIcon: ({ color }) => (

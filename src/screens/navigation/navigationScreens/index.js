@@ -7,7 +7,13 @@ import HomeScreen from '../../Home';
 import Category from '../../Category';
 import COLORS from '../../../config/colors';
 import Description from '../../Description';
-
+import Fullscreen from '../../Description/fullscreen';
+import Subject from '../../Subject';
+import SubjectCategory from '../../SubjectCategory';
+import SubjectSubCategory from '../../SubjectSubCategory';
+import Videobysubject from '../../Videobysubject';
+import MyPurchase from '../../MyPurchase';
+import ViewPdf from '../../ViewPdf';
 const Stack = createNativeStackNavigator();
 const NavigationScreens = () => {
  
@@ -31,9 +37,41 @@ const NavigationScreens = () => {
         name="Course"
         component={Course}
       />
+       <Stack.Screen
+        name="My Purchased"
+        component={MyPurchase}
+        options={{headerShown: false}}
+
+      />
       <Stack.Screen
         name="Description"
         component={Description}
+      />
+      <Stack.Screen
+        name="Subject"
+        component={Subject}
+      />
+       <Stack.Screen
+        name="SubjectCategory"
+        component={SubjectCategory}
+      />
+       <Stack.Screen
+        name="SubjectSubCategory"
+        component={SubjectSubCategory}
+      />
+         <Stack.Screen
+        name="Videobysubject"
+        component={Videobysubject}
+      />
+       <Stack.Screen
+        name="FullScreen"
+        component={Fullscreen}
+        options={{headerShown: false}}
+      />
+          <Stack.Screen
+        name="ViewPdf"
+        component={ViewPdf}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
