@@ -120,19 +120,19 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     width: Dimensions.get('window').width / 1.2,
     height: Dimensions.get('window').height / 5,
-    borderRadius:5
+    borderRadius:5,
+    resizeMode: 'contain'
   },
   elevation: {
     shadowColor: '#52006A',
     elevation: 4,
   },
   row: {
-    flex: 1,
-    flexWrap: 'wrap',
+ 
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-   
-  
+    justifyContent: 'space-between',
+    paddingTop:10,
+    height: 60,
   },
 
   description2: {
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     textDecorationStyle: 'solid',
   },
   buynow: {
- height:40,
+  height:40,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.bgColor,

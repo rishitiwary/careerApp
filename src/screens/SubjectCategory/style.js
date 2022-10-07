@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     
     width: Dimensions.get('window').width / 3,
     height: Dimensions.get('window').height / 4.6,
+    resizeMode: 'contain'
    
   },
   elevation: {  

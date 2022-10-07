@@ -9,35 +9,34 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  Alert
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
 
+
 const Subject = ({route}) => {
   let id = route.params.id;
   let type = route.params.type;
-
   const navigation = useNavigation();
-  const handleClick = item => {
+  const handleClick = async (item) => {
     let courseId = item.id;
     let type = item.type;
     let name = item.subname;
-
-    navigation.navigate('SubjectCategory', {
+  await  navigation.navigate('SubjectCategory', {
       courseId: courseId,
       type: type,
       name: name,
     });
   };
-  const handleClick2 = item => {
+  const handleClick2 = async (item) => {
     let id = item.id;
     let category = item.category;
     let type = item.type;
     let name = item.subname;
-
-    navigation.navigate('Videobysubject', {
+  await  navigation.navigate('Videobysubject', {
       id,
       type,
       name,
@@ -67,15 +66,14 @@ const Subject = ({route}) => {
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
+      {activityIndicator ?
         <ActivityIndicator
           color="#000099"
           size="large"
           style={styles.activityIndicator}
         />
-      ) : (
-        ''
-      )}
+       : ''
+      }
       <View style={styles.header}>
         <Topmenu />
       </View>
@@ -94,7 +92,7 @@ const Subject = ({route}) => {
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                    {item.images.length<=0 ? (
+                    {item.images.length <= 0 ? (
                       <Image key={item.id} source={Book} style={styles.image} />
                     ) : (
                       <Image
@@ -122,43 +120,42 @@ const Subject = ({route}) => {
           />
         ) : (
           <FlatList
-          data={getData.data}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={() => handleClick2(item)}>
-              <View style={[styles.card, styles.elevation]}>
-                <View
-                  style={{
-                    flex: 2,
-                    justifyContent: 'space-evenly',
-                    paddingBottom: 50,
-                    paddingHorizontal: 10,
-                  }}>
-                  {item.images.length<=0 ? (
-                    <Image key={item.id} source={Book} style={styles.image} />
-                  ) : (
-                    <Image
-                      key={item.id}
-                      source={{uri: `${IMG_URL + item.images}`}}
-                      style={styles.image}
-                    />
-                  )}
+            data={getData.data}
+            renderItem={({item}) => (
+              <TouchableOpacity onPress={() => handleClick2(item)}>
+                <View style={[styles.card, styles.elevation]}>
+                  <View
+                    style={{
+                      flex: 2,
+                      justifyContent: 'space-evenly',
+                      paddingBottom: 50,
+                      paddingHorizontal: 10,
+                    }}>
+                    {item.images.length <= 0 ? (
+                      <Image key={item.id} source={Book} style={styles.image} />
+                    ) : (
+                      <Image
+                        key={item.id}
+                        source={{uri: `${IMG_URL + item.images}`}}
+                        style={styles.image}
+                      />
+                    )}
+                  </View>
+                  <View
+                    style={{
+                      flex: 10,
+                      justifyContent: 'space-evenly',
+                      alignItems: 'flex-start',
+                      paddingTop: 100,
+                    }}>
+                    <Text style={styles.cardText}>{item.subname} </Text>
+                  </View>
                 </View>
-                <View
-                  style={{
-                    flex: 20,
-                    justifyContent: 'space-evenly',
-                    alignItems: 'flex-start',
-                    paddingLeft: 10,
-                    paddingTop: 100,
-                  }}>
-                  <Text style={styles.cardText}>{item.subname} </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-        />
+              </TouchableOpacity>
+            )}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+          />
         )}
       </View>
       <BottomNavigation />

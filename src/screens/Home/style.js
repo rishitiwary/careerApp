@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
    paddingVertical:15,
     width: Dimensions.get('window').width / 1.1,
     height: Dimensions.get('window').height / 3.5,
-    borderRadius:5  
+    borderRadius:5 ,
+    resizeMode: 'contain' 
   },
   elevation: {  
     shadowColor: '#52006A',  

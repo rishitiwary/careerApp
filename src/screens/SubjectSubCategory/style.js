@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: Dimensions.get('window').width / 3.5,
     height: Dimensions.get('window').height / 6.8,
+    resizeMode: 'contain'
   },
   elevation: {
     shadowColor: '#52006A',

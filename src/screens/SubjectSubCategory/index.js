@@ -32,11 +32,11 @@ const SubjectSubCategory = ({route}) => {
 
     setData(result.data);
   });
-  const handleClick = item => {
+  const handleClick = async(item) => {
     let id = item.id;
     let type = item.type;
     let name = item.video_categories;
-    navigation.navigate('Videobysubject', {
+   await navigation.navigate('Videobysubject', {
       id,
       type,
       name,

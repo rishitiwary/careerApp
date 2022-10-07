@@ -33,11 +33,11 @@ const SubjectCategory = ({route}) => {
 
     setData(result.data);
   });
-  const handleClick = item => {
+  const handleClick = async(item) => {
     let id = item.id;
     let type = item.type;
     let name = item.subname;
-    navigation.navigate('SubjectSubCategory', {
+   await navigation.navigate('SubjectSubCategory', {
       id,
       type,
       name,

@@ -28,11 +28,11 @@ const MyPurchase = () => {
     setData(result.data);
    
   });
-  const handleClick=(item)=>{
+  const handleClick=async (item)=>{
     let type =item.type;
     let id =item.id;
     let subject=item.sub_name;
-     navigation.navigate('Subject',{
+    await navigation.navigate('Subject',{
        type,id,subject
      });
   }

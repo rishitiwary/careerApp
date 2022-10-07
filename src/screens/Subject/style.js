@@ -117,12 +117,12 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     flexDirection: 'row',
-    marginBottom: 15,
+    marginBottom: 10,
     marginRight: 10,
     marginLeft: 10,
-    padding: 10,
+    padding: 5,
     width: Dimensions.get('window').width / 2.3,
-    height: Dimensions.get('window').height / 4,
+    height: Dimensions.get('window').height / 3.5,
     borderRadius: 10,
     backgroundColor:COLORS.white,
     
@@ -131,15 +131,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight:'bold',
     color: 'black',
-    marginTop:10,
+    marginTop:5,
     justifyContent:'flex-start',
 
   },
   image:{
     marginHorizontal:10,
-    marginTop:10,
+    marginTop:-30,
     width: Dimensions.get('window').width / 3.5,
-    height: Dimensions.get('window').height / 6.8,
+    height: Dimensions.get('window').height / 7,
+    resizeMode: 'contain'
   },
   elevation: {  
     shadowColor: '#52006A',  

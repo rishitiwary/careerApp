@@ -27,7 +27,6 @@ const HomeScreen = () => {
   }, []);
   return (
     <View style={styles.container}>
-      {console.log(getData)}
       <View style={styles.headerBanner}><Text style={styles.headerText}>Career Foundation</Text></View>
       <View style={styles.header}>
         <Topmenu />

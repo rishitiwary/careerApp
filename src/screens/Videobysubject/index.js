@@ -42,11 +42,11 @@ const Videobysubject = ({route}) => {
     });
     setData(result.data);
   });
-  const handleClick = item => {
+  const handleClick = async (item) => {
     let video = item.videos;
     let description = item.description;
 
-    navigation.navigate('Description', {
+   await navigation.navigate('Description', {
       video,
       description,
     });
@@ -77,7 +77,7 @@ const Videobysubject = ({route}) => {
         data={getData.data}
         renderItem={({item}) => (
           <View style={[styles.card, styles.elevation]}>
-             
+         
             <TouchableOpacity onPress={() => handleClick(item)}>
               <View style={styles.image}>
 
@@ -97,21 +97,23 @@ const Videobysubject = ({route}) => {
               <Text style={styles.descriptionText}>
                 {item.description.replace(regex, '')}
               </Text>
-            </View>
 
-            <View style={styles.row}>
-    
-              <TouchableOpacity onPress={()=>ViewPdf(item)}>
-                <View style={styles.buynow}>
-                  <Text style={{color: 'white'}}>View PDF</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>DownloadPdf(item.pdfs)}>
-                <View style={styles.demo}>
-                  <Text style={{color: 'white'}}>Download PDF</Text>
-                </View>
-              </TouchableOpacity>
+
+            
             </View>
+            <View style={styles.row}>
+    <TouchableOpacity onPress={()=>ViewPdf(item)}>
+      <View style={styles.buynow}>
+        <Text style={{color: 'white'}}>View PDF</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={()=>DownloadPdf(item.pdfs)}>
+      <View style={styles.demo}>
+        <Text style={{color: 'white'}}>Download PDF</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+            
           </View>
         )}
         showsVerticalScrollIndicator={false}

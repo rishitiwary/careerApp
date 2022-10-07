@@ -10,19 +10,18 @@ import {
 // Import RNFetchBlob for the file download
 import RNFetchBlob from 'rn-fetch-blob';
 import { IMG_URL } from '../config/config';
+ 
 const showToast = () => {
   ToastAndroid.show("Your pdf is start to download go to notification !", ToastAndroid.SHORT);
 };
-  
- export const DownloadPdf = async (pdfs) => {
-  showToast();
-  let pdfTitle=pdfs;
-  let fileUrl = IMG_URL+pdfs;
-    // Function to check the platform
-    // If Platform is Android then check for permissions.
 
+  export const DownloadPdf = async (pdfs) => {
+    showToast();
+    let fileUrl = IMG_URL+pdfs;
+alert(fileUrl);
+   
     if (Platform.OS === 'ios') {
-      downloadFile(fileUrl,pdfTitle);
+     downloadFile(fileUrl);
     } else {
       try {
         const granted = await PermissionsAndroid.request(
@@ -35,28 +34,28 @@ const showToast = () => {
         );
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           // Start downloading
-          downloadFile(fileUrl,pdfTitle);
+       await downloadFile(fileUrl);
+       alert('granted');
           console.log('Storage Permission Granted.');
         } else {
           // If permission denied then show alert
           Alert.alert('Error','Storage Permission Not Granted');
         }
       } catch (err) {
+        alert(err);
         // To handle permission related exception
         console.log("++++"+err);
       }
     }
   };
 
-  const downloadFile = (fileUrl,pdfTitle) => {
-   
-    // Get today's date to add the time suffix in filename
-    let date = new Date();
+     const  downloadFile = async (fileUrl) => {
     // File URL which we want to download
-    let FILE_URL = fileUrl;    
+    let FILE_URL = fileUrl;  
+    alert(FILE_URL);  
     // Function to get extention of the file url
     let file_ext = getFileExtention(FILE_URL);
-   
+   alert(file_ext);
     file_ext = '.' + file_ext[0];
    
     // config: To get response by passing the downloading related options
@@ -68,21 +67,24 @@ const showToast = () => {
       addAndroidDownloads: {
         path:
           RootDir+
-          '/Career ' + 
-          pdfTitle,
+          '/Career ' + fileUrl,
         description: 'downloading file...',
         notification: true,
         // useDownloadManager works with Android only
         useDownloadManager: true,   
       },
     };
-    config(options)
+  await  config(options)
       .fetch('GET', FILE_URL)
       .then(res => {
+        alert('success');
         // Alert after successful downloading
-        console.log('res -> ', JSON.stringify(res));
+        // console.log('res -> ', JSON.stringify(res));
         alert('File Downloaded Successfully.');
-      });
+      })
+      .catch((err) => {
+        alert('download error, err is', JSON.stringify(err));
+    });
   };
 
   const getFileExtention = fileUrl => {
@@ -91,6 +93,7 @@ const showToast = () => {
              /[^.]+$/.exec(fileUrl) : undefined;
   };
  
+ 
 
-  
+ 
  
