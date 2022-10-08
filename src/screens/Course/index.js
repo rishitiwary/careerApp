@@ -11,6 +11,7 @@ const Course = ({route}) => {
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let courseId = route.params.courseId;
   const [getData, setData] = useState([]);
+  const [imageLoading, setImageLoading] = useState(true);
   const [activityIndicator,setActivityIndicator]=useState(true);
   const handleFetchData = async () => {
     let result = await axios({
@@ -52,10 +53,16 @@ const handleClick=(item)=>{
               <View style={[styles.card, styles.elevation]}>
                 <View style={styles.row}>
                   <View style={styles.image}>
-                    <Image
+                  {imageLoading?<Image
+                        key={item.id}
+                        source={require('../../../assets/images/book.jpeg')}
+                        style={styles.image}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
-                    />
+                    />}
                   </View>
                   <View style={styles.row}>
                     <Text style={[styles.title, styles.text]}>

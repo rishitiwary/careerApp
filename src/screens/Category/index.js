@@ -15,6 +15,7 @@ const Category = () => {
     navigation.navigate('Course',{courseId:courseId,courseName:courseName});
   };
   const [getData, setData] = useState([]);
+  const [imageLoading, setImageLoading] = useState(true);
   const [activityIndicator,setActivityIndicator]=useState(true);
   const handleFetchData = async () => {
     let result = await axios({
@@ -58,10 +59,16 @@ const Category = () => {
                     paddingBottom: 50,
                     paddingHorizontal:10
                   }}>
-                  <Image
-                    source={{uri: `${IMG_URL + item.images}`}}
-                    style={styles.image}
-                  />
+                    {imageLoading?<Image
+                        key={item.id}
+                        source={require('../../../assets/images/book.jpeg')}
+                        style={styles.image}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />}
                 </View>
                 <View
                   style={{

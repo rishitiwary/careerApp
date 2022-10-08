@@ -19,7 +19,7 @@ const SubjectCategory = ({route}) => {
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let id = route.params.courseId;
   let type = route.params.type;
-
+  const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [activityIndicator, setActivityIndicator] = useState(true);
   const handleFetchData = useMemo(async () => {
@@ -68,15 +68,17 @@ const SubjectCategory = ({route}) => {
             <View style={[styles.card, styles.elevation]}>
               <View style={styles.row}>
                 <View style={styles.image}>
-                  {item.images.length<=0 ? (
-                    <Image key={item.id} source={Book} style={styles.image} />
-                  ) : (
-                    <Image
+                {imageLoading?<Image
+                        key={item.id}
+                        source={require('../../../assets/images/book.jpeg')}
+                        style={styles.image}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
-                    />
-                  )}
+                    />}
+                  
                 </View>
                 <View style={styles.row}>
                   <Text style={[styles.title, styles.text]}>

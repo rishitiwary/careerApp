@@ -7,13 +7,13 @@ import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
-import Book from '../../../assets/images/book.jpeg';
+ 
 const MyPurchase = () => {
   const {userInfo}=React.useContext(AuthContext);
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   const [getData, setData] = useState([]);
- 
+  const [imageLoading, setImageLoading] = useState(true);
   let id=JSON.parse(userInfo).user_detail.id;
   const handleFetchData = useMemo(async () => {
     let result = await axios({
@@ -63,15 +63,17 @@ const MyPurchase = () => {
               <View style={[styles.card, styles.elevation]}>
                 <View style={styles.row}>
                   <View style={styles.image}>
-                  {item.images.length<=0 ? (
-                      <Image key={item.id} source={Book} style={styles.image} />
-                    ) : (
-                      <Image
+                  {imageLoading?<Image
                         key={item.id}
-                        source={{uri: `${IMG_URL + item.images}`}}
+                        source={require('../../../assets/images/book.jpeg')}
                         style={styles.image}
-                      />
-                    )}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />}
+                  
                   </View>
                   <View style={styles.row}>
                     <Text style={[styles.title, styles.text]}>

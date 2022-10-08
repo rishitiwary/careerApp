@@ -44,6 +44,7 @@ const Subject = ({route}) => {
     });
   };
   const [getData, setData] = useState([]);
+  const [imageLoading, setImageLoading] = useState(true);
   const [activityIndicator, setActivityIndicator] = useState(true);
   const handleFetchData = useMemo(async () => {
     let url = `${BASE_URL}/getSubjectById/${id}`;
@@ -92,15 +93,16 @@ const Subject = ({route}) => {
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                    {item.images.length <= 0 ? (
-                      <Image key={item.id} source={Book} style={styles.image} />
-                    ) : (
-                      <Image
+                     {imageLoading?<Image
                         key={item.id}
-                        source={{uri: `${IMG_URL + item.images}`}}
+                        source={require('../../../assets/images/book.jpeg')}
                         style={styles.image}
-                      />
-                    )}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />}
                   </View>
                   <View
                     style={{
@@ -131,15 +133,18 @@ const Subject = ({route}) => {
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                    {item.images.length <= 0 ? (
-                      <Image key={item.id} source={Book} style={styles.image} />
-                    ) : (
-                      <Image
+                  
+        {imageLoading?<Image
                         key={item.id}
-                        source={{uri: `${IMG_URL + item.images}`}}
+                        source={require('../../../assets/images/book.jpeg')}
                         style={styles.image}
-                      />
-                    )}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />}
+                  
                   </View>
                   <View
                     style={{

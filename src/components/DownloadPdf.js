@@ -81,7 +81,7 @@ const showToast = () => {
       .then(res => {
         // Alert after successful downloading
         console.log('res -> ', JSON.stringify(res));
-        alert('File Downloaded Successfully.');
+        ToastAndroid.show("File Downloaded Successfully.", ToastAndroid.SHORT);
       });
   };
 

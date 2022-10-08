@@ -9,9 +9,7 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
-  Platform,
-  PermissionsAndroid,
-  Alert,
+ 
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -26,6 +24,7 @@ const Videobysubject = ({route}) => {
   let id = route.params.id;
   let category = route.params.category;
   let type = route.params.type;
+  const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [activityIndicator, setActivityIndicator] = useState(true);
   let url =
@@ -80,15 +79,19 @@ const Videobysubject = ({route}) => {
          
             <TouchableOpacity onPress={() => handleClick(item)}>
               <View style={styles.image}>
+ 
+              {imageLoading?<Image
+                        key={item.id}
+                        source={require('../../../assets/images/book.jpeg')}
+                        style={styles.image}
+                        onLoad={()=>setImageLoading(false)}
+                      />:<Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.thumbnail}`}}
+                      style={styles.image}
+                    />}
 
-              {item.thumbnail.length<=0?<Image
-                  key={item.id}
-                  source={Book}
-                  style={styles.image}/>:<Image
-                  key={item.id}
-                    source={{uri: `${IMG_URL + item.thumbnail}`}}
-                    style={styles.image}
-                  />}
+          
                 
               </View>
             </TouchableOpacity>
