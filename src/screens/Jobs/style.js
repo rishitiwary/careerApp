@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 5,
     width: Dimensions.get('window').width / 1.2,
-    height: Dimensions.get('window').height / 4.2,
+    height: Dimensions.get('window').height / 5,
     borderRadius:5,
     resizeMode: 'contain'
   },
@@ -151,9 +151,9 @@ const styles = StyleSheet.create({
     
   },
   title: {
-   
     fontSize: 15,
     fontWeight: 'bold',
+    paddingHorizontal: 5,
     color: COLORS.dark,
   },
   descriptionText: {

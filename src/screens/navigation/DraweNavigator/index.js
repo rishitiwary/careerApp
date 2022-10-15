@@ -12,17 +12,14 @@ import COLORS from '../../../config/colors';
 const Drawer = createDrawerNavigator();
 import NavigationScreens from '../navigationScreens';
 export default function MyDrawer() {
-  
   return (
-     
-    <Drawer.Navigator 
+    <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
       initialRouteName="HomeScreen"
-      
       screenOptions={{
-        drawerActiveBackgroundColor:COLORS.bgColor,
-        drawerActiveTintColor:'#fff',
-        drawerInactiveTintColor:'#333',
+        drawerActiveBackgroundColor: COLORS.bgColor,
+        drawerActiveTintColor: '#fff',
+        drawerInactiveTintColor: '#333',
         drawerLabelStyle: {
           marginLeft: -25,
           fontFamily: 'Roboto-Medium',
@@ -30,27 +27,22 @@ export default function MyDrawer() {
         },
         headerStyle: {
           backgroundColor: COLORS.bgColor,
-          
         },
         headerTintColor: '#fff',
-        headerShown:false,
-        swipeEnabled: false 
+        headerShown: false,
+        swipeEnabled: false,
       }}>
-        
       <Drawer.Screen
         name="HomeScreen"
-        
         component={NavigationScreens}
         options={{
           title: 'Home',
           drawerIcon: ({color}) => (
             <Ionicons name="home-outline" size={22} color={color} />
-          )
-         
+          ),
         }}
-       
       />
-        
+
       <Drawer.Screen
         name="Edit Profile"
         component={EditProfile}
@@ -61,27 +53,27 @@ export default function MyDrawer() {
           ),
         }}
       />
-  <Drawer.Screen
+      <Drawer.Screen
         name="Change Password"
         component={ChangePassword}
         options={{
           title: 'Change Password',
           drawerIcon: ({color}) => (
-            <Ionicons name="person-outline" size={22} color={color} />
+            <Ionicons name="settings-outline" size={22} color={color} />
           ),
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Faq"
         component={Faq}
         options={{
           title: 'Faq',
           drawerIcon: ({color}) => (
-            <Ionicons name="person-outline" size={22} color={color} />
+            <Ionicons name="help-outline" size={22} color={color} />
           ),
         }}
       />
-        <Drawer.Screen
+      <Drawer.Screen
         name="About Us"
         component={AboutUs}
         options={{
@@ -92,12 +84,12 @@ export default function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Setting"
+        name="Contactus"
         component={SettingScreen}
         options={{
-          title: 'Settings',
+          title: 'Contact Us',
           drawerIcon: ({color}) => (
-            <Ionicons name="settings-outline" size={22} color={color} />
+            <Ionicons name="person-outline" size={22} color={color} />
           ),
         }}
       />

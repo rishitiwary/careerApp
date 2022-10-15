@@ -22,28 +22,26 @@ export  const Topmenu=()=>{
           <Text style={styles.text1}>All Course</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={()=>navigation.navigate('FreeVideos')}>
         <View style={styles.view}>
           <Text style={styles.text1}>Free Videos</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('Test Series')}>
         <View style={styles.view}>
           <Text style={styles.text1}>Test Series</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity> 
+        {/* <TouchableOpacity onPress={()=>navigation.navigate('Books')}> 
         <View style={styles.view}>
           <Text style={styles.text1}>Books</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity>
-
- 
+        <TouchableOpacity onPress={()=>navigation.navigate('Jobs')}>
         <View style={styles.view}>
           <Text style={styles.text1}>Jobs & Vancacies</Text>
         </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ScrollView>
     )
 

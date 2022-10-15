@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   row: {
-    flex: 0.68,
+    height: Dimensions.get('window').height,
+    flex: 1,
     backgroundColor: 'black',
   },
 

@@ -20,15 +20,17 @@ export default {
     fontSize: 28,
   },
   scrollview: {
-    marginHorizontal: 5,
+    flex:1,
+    contentContainerStyle:'space-between',
+    marginHorizontal: 1,
   },
   view: {
     padding: 5,
     borderColor: COLORS.bgColor,
     borderWidth: 2,
-    borderRadius: 15,
+    borderRadius: 12,
     marginTop: 10,
-    marginHorizontal: 3,
+    marginHorizontal: 10,
     backgroundColor: COLORS.bgColorlight,
   },
   text1: {
