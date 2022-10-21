@@ -41,9 +41,9 @@ const  styles = StyleSheet.create({
     },
    
     text:{
-        paddingTop:20,
-        color:'#fff',
-        fontSize:25,
+         color:'black',
+         fontSize:15,
+         padding:2
         
     },
      
@@ -60,7 +60,6 @@ const  styles = StyleSheet.create({
                 marginHorizontal:15,
                 marginTop:-20,
                 borderRadius:5
-
             
             },
             elevation: {  
@@ -73,13 +72,11 @@ input:{
     borderRadius:2,
 },
 title:{
-
-flex:1,
-justifyContent:'flex-start',
-color:'#05375a',
-fontSize:18,
-paddingTop:10,
- 
+    paddingTop:10,
+    flex:1,
+    justifyContent:'flex-start',
+    color:'#05375a',
+    fontSize:17,
 
 },
  

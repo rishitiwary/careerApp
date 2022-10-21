@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
 
   },
   image:{
-    
+     
     width: Dimensions.get('window').width / 3,
     height: Dimensions.get('window').height / 4.6,
-   
+    resizeMode: 'stretch',
   },
   elevation: {  
     shadowColor: '#52006A',  

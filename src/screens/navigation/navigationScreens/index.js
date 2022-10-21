@@ -70,7 +70,8 @@ const NavigationScreens = () => {
        <Stack.Screen
         name="FullScreen"
         component={Fullscreen}
-        options={{headerShown: false}}
+        options={{headerShown: false,orientation: 'landscape'}}
+         
       />
           <Stack.Screen
         name="ViewPdf"

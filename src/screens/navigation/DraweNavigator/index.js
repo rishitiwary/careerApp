@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-// import BottomNavigator from '../BottomNavigator';
-import SettingScreen from '../../Settings';
+ import {Linking} from 'react-native';
+import ContactUs from '../../ContactUs';
 import EditProfile from '../../Editprofile';
 import ChangePassword from '../../ChangePassword';
 import Faq from '../../Faq';
@@ -52,6 +52,9 @@ export default function MyDrawer() {
             <Ionicons name="person-outline" size={22} color={color} />
           ),
         }}
+        screenOptions={{
+          tabBarHideOnKeyboard: true
+        }}
       />
       <Drawer.Screen
         name="Change Password"
@@ -62,20 +65,23 @@ export default function MyDrawer() {
             <Ionicons name="settings-outline" size={22} color={color} />
           ),
         }}
+        screenOptions={{
+          tabBarHideOnKeyboard: true
+        }}
       />
-      <Drawer.Screen
-        name="Faq"
+      {/* <Drawer.Screen
+        name="FAQ"
         component={Faq}
         options={{
-          title: 'Faq',
+          title: 'FAQ',
           drawerIcon: ({color}) => (
             <Ionicons name="help-outline" size={22} color={color} />
           ),
         }}
-      />
+      /> */}
       <Drawer.Screen
         name="About Us"
-        component={AboutUs}
+       component={AboutUs}
         options={{
           title: 'About Us',
           drawerIcon: ({color}) => (
@@ -85,7 +91,7 @@ export default function MyDrawer() {
       />
       <Drawer.Screen
         name="Contactus"
-        component={SettingScreen}
+        component={ContactUs}
         options={{
           title: 'Contact Us',
           drawerIcon: ({color}) => (

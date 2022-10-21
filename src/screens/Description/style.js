@@ -1,6 +1,6 @@
 import COLORS from '../../config/colors';
 import {Dimensions, StyleSheet, Platform} from 'react-native';
-const {height} = Dimensions.get('screen');
+const {height,width} = Dimensions.get('screen');
 const height_logo = height * 0.1;
 const styles = StyleSheet.create({
   inputIOS: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   row: {
     height: Dimensions.get('window').height,
-    flex: 1,
+    flex: 1.35,
     backgroundColor: 'black',
   },
 
@@ -190,13 +190,25 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
   },
+  hideSharefullScreenleft: {
+    bottom: 0,
+    marginBottom: 70,
+    height: 60,
+    width: '100%',
+    position: 'absolute',
+     
+  },
   fullscreen: {
     flex: 1,
-    backgroundColor: 'black',
+    height:height,
+    width:width
   },
   fullscreenVideo: {
-    marginVertical: 240,
     flex: 1,
+    height:height,
+    width:width
+   
+    
   },
 });
 export default styles;

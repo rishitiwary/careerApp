@@ -1,12 +1,74 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
-import {View, Text, FlatList, TouchableOpacity, Image,ActivityIndicator} from 'react-native';
+import {AuthContext} from '../../components/AuthContext';
+import {View, Text, FlatList, TouchableOpacity, Image,ActivityIndicator,ToastAndroid} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
+import RazorpayCheckout from 'react-native-razorpay';
 
+const buyNow=([{purchaseVal,item}])=>{
+  
+  let options = {
+    description: item.description,
+    image: 'https://www.careerfoundation.org.in/assets/images/logo/logo.png',
+    currency: 'INR',
+    key: 'rzp_test_JOC0wRKpLH1cVW',
+    amount: item.price*100,
+    name: item.sub_name,
+    // order_id: 'order_DslnoIgkIDL8Zt',//Replace this with an order_id created using Orders API.
+    prefill: {
+      email: purchaseVal.email,
+      contact: purchaseVal.mobile,
+      name: purchaseVal.name
+    },
+    theme: {color: '#000099'}
+  }
+  RazorpayCheckout.open(options).then((data) => {
+    let courseInfo={
+      amount:item.price,
+      purpose:item.sub_name,
+      courseid:item.id,
+      pay_status:'Credit',
+      razorpay_payment_id:data.razorpay_payment_id
+    }
+   let paySuccessVal= Object.assign(purchaseVal,courseInfo);
+     handlePayment(paySuccessVal);
+
+  }).catch((error) => {
+    // handle failure
+    console.log(`Error: ${error.code} | ${error.description}`);
+  });
+}
+const handlePayment=async (paySuccessVal)=>{
+  
+  await axios({
+    method: 'POST',
+    url: `${BASE_URL}/razorpay`,
+    data: paySuccessVal,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+    .then(function (response) {
+      let result = JSON.stringify(response.data.message);
+      alert(`Payment Successful: Your TransactionId - ${paySuccessVal.razorpay_payment_id}`);
+     
+    })
+    .catch(function (error) {
+      console.log('error', error.response.message);
+     
+    });
+  }
 const Course = ({route}) => {
+
+const {userInfo}=React.useContext(AuthContext);
+let purchaseVal={
+  name:JSON.parse(userInfo).user_detail.username,
+  email:JSON.parse(userInfo).user_detail.email,
+  mobile:JSON.parse(userInfo).user_detail.phone,
+  uid:JSON.parse(userInfo).user_detail.id
+}
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let courseId = route.params.courseId;
@@ -31,6 +93,7 @@ const handleClick=(item)=>{
      video,description
    });
 }
+
   useEffect(() => {
     navigation.setOptions({title: route.params.courseName});
     handleFetchData();
@@ -62,6 +125,7 @@ const handleClick=(item)=>{
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
+                      
                     />}
                   </View>
                   <View style={styles.row}>
@@ -88,7 +152,7 @@ const handleClick=(item)=>{
                   </Text>
                 </View>
                 <View style={styles.description3}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={()=>buyNow([{purchaseVal,item}])}>
                     <View style={styles.buynow}>
                       <Text style={{color: 'white'}}>Buy Now</Text>
                     </View>
@@ -106,6 +170,7 @@ const handleClick=(item)=>{
           showsHorizontalScrollIndicator={false}
         />
       </View>
+      
     </View>
   );
 };

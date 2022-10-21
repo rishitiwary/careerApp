@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
 import {
@@ -6,13 +6,14 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   useWindowDimensions,
+  StatusBar
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import styles from './style';
 
 const Fullscreen = ({route}) => {
-  console.log(route);
+ 
   const navigation = useNavigation();
   let video = route.params.video;
  
@@ -21,24 +22,16 @@ const Fullscreen = ({route}) => {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
   const [playing, setPlaying] = useState(false);
-  // const onStateChange = useCallback(state => {
-  //   if (state === 'ended') {
-  //     setPlaying(false);
-  //     Alert.alert('video has finished playing!');
-  //   }
-  // }, []);
-
-  // const togglePlaying = useCallback(() => {
-  //   setPlaying(prev => !prev);
-  // }, []);
+ 
 
   useEffect(() => {
-    
     setActivityIndicator(false);
   }, []);
 
   return (
     <View style={styles.fullscreen}>
+      <StatusBar
+        hidden={true} />
       {activityIndicator ? (
         <ActivityIndicator
           color="#000099"
@@ -64,6 +57,7 @@ const Fullscreen = ({route}) => {
         />
 
         <TouchableOpacity style={styles.hideSharefullScreen} />
+        <TouchableOpacity style={styles.hideSharefullScreenleft} />
       </View>
      
     </View>

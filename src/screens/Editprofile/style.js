@@ -1,6 +1,7 @@
 import COLORS from '../../config/colors';
 import { Dimensions,StyleSheet,Platform } from 'react-native';
-const {height}=Dimensions.get("screen");
+const {height,width} = Dimensions.get('screen');
+ 
 const height_logo=height * 0.10;
  
 const  styles = StyleSheet.create({
@@ -15,10 +16,25 @@ const  styles = StyleSheet.create({
         color: 'black'
       },
     container:{
-        flex:1,
-        backgroundColor:COLORS.bgColor, 
+        flex: 1,
+        backgroundColor: COLORS.white,
+        
         
     },
+    headerBanner: {
+        flex: 0.8,
+        width:width,
+        backgroundColor:COLORS.bgColor,
+     
+      },
+      headerText: {
+        color:COLORS.white,
+        marginVertical:20,
+        paddingHorizontal:10,
+        fontSize:20,
+        fontWeight:'bold'
+     
+      },
     logo:{
         height:height_logo,
         width:height_logo,
@@ -32,23 +48,24 @@ const  styles = StyleSheet.create({
     },
      
     header:{
-        flex:2,
+        flex:1,
         justifyContent:'center',
         alignItems:'center',
-        marginBottom:20,
-        marginTop:20,
-
+        marginTop:10,
             },
             footer:{
-                flex:2,
+                flex:5,
                 backgroundColor:COLORS.white,
-                borderTopLeftRadius:30,
-                borderTopRightRadius:30,
-                paddingVertical:50,
                 paddingHorizontal:30,
-                
-            
+                marginHorizontal:15,
+              borderTopRightRadius:30,
+              borderTopLeftRadius:30,
+                borderRadius:5
             },
+            elevation: {  
+                shadowColor: '#52006A',  
+                elevation: 10,  
+              }, 
 input:{
     borderColor:COLORS.primary,
     borderRadius:2,

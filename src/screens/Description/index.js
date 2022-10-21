@@ -65,15 +65,15 @@ const Description = ({route}) => {
       
       <View
         style={{
-          flex: 2,
+          flex: 3,
           alignItems: 'center',
           justifyContent: 'flex-start',
           width: '100%',
-          marginTop: '16%',
-          paddingHorizontal: 10,
+          marginTop: 10,
+         
         }}>
-           <Button title="Full Screen" color="#000099" borderRadius="2" onPress={()=>fullscreen()}/>
-        <Text style={{color: 'black'}}>{description.replace(regex, '')}</Text>
+           <Button title="View In Full Screen" color="#000099" borderRadius="2" onPress={()=>fullscreen()}/>
+        <Text style={{color: 'black',justifyContent:'flex-start'}}>{description.replace(regex, '')}</Text>
       </View>
     </View>
   );

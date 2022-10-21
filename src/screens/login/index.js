@@ -74,7 +74,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      {console.log(data)}
+ 
       <Spinner visible={isLoading} />
       <Animatable.View style={styles.header} animation="fadeInDownBig">
         <Image source={Logo} style={styles.logo} />

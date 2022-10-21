@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -16,9 +16,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
-const {height} = Dimensions.get('screen');
+import Spinner from 'react-native-loading-spinner-overlay';
+import {AuthContext} from '../../components/AuthContext';
 
 const Forgot = () => {
+  const {forgot, isLoading} = useContext(AuthContext);
   const navigation = useNavigation();
   const [data, setData] = useState({
     email: '',
@@ -41,27 +43,17 @@ const Forgot = () => {
       });
     }
   };
-  const handlePassword = val => {
-    if (val.length != 0) {
-      setData({
-        ...data,
-        password: val,
-      });
+  const handleClick = () => {
+    if (data.email.length > 0) {
+      forgot(data);
     } else {
-      setData({
-        ...data,
-        password: val,
-      });
+      alert('Please fill all the fields.');
     }
   };
-  const updateSecureText = () => {
-    setData({
-      ...data,
-      secureTextEntry: !data.secureTextEntry,
-    });
-  };
+ 
   return (
     <View style={styles.container}>
+          <Spinner visible={isLoading} />
       <Animatable.View style={styles.header} animation="fadeInDownBig">
         <Image source={Logo} style={styles.logo} />
         <Text style={styles.text}>Forgot Password</Text>
@@ -88,7 +80,7 @@ const Forgot = () => {
         </View>
 
     <View style={{flex:1}}></View>
-        <TouchableOpacity onPress={() => alert('yes')}>
+        <TouchableOpacity onPress={() =>handleClick()}>
           <LinearGradient colors={['#0000ff', '#000099']} style={styles.signIn}>
             <Text style={styles.textSingIn}>Send Email</Text>
             <MaterialIcon name="navigate-next" color="#fff" size={20} />
