@@ -7,7 +7,6 @@ import SplashScreen from '../../SplashScreen';
 import LoginScreen from '../../login';
 import SignupScreen from '../../register';
 import ForgetScreen from '../../forgetpassword';
-import Course from '../../Course';
 import {AuthContext} from '../../../components/AuthContext'
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {

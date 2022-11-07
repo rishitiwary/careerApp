@@ -14,6 +14,7 @@ const Category = () => {
     let courseName = item.course_name;
     navigation.navigate('Course',{courseId:courseId,courseName:courseName});
   };
+ 
   const [getData, setData] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
   const [activityIndicator,setActivityIndicator]=useState(true);

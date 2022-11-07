@@ -53,6 +53,7 @@ const Fullscreen = ({route}) => {
             modestbranding: 'false',
             preventFullScreen: 'true',
             frameborder: 'false',
+            
           }}
         />
 

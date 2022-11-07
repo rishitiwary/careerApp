@@ -94,6 +94,7 @@ const handleClick=(item)=>{
    });
 }
 
+
   useEffect(() => {
     navigation.setOptions({title: route.params.courseName});
     handleFetchData();
