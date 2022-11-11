@@ -13,7 +13,7 @@ const buyNow=([{purchaseVal,item}])=>{
     description: item.description,
     image: 'https://www.careerfoundation.org.in/assets/images/logo/logo.png',
     currency: 'INR',
-    key: 'rzp_test_JOC0wRKpLH1cVW',
+    key: 'rzp_live_QkaMpUNBYhZzQU',
     amount: item.price*100,
     name: item.sub_name,
     // order_id: 'order_DslnoIgkIDL8Zt',//Replace this with an order_id created using Orders API.
@@ -56,8 +56,8 @@ const handlePayment=async (paySuccessVal)=>{
      
     })
     .catch(function (error) {
-      console.log('error', error.response.message);
-     
+     // console.log('error', error.response.message);
+      alert(`Sorry some error occured.Please try again.${error.response.message}`);
     });
   }
 const Course = ({route}) => {
@@ -70,6 +70,10 @@ let purchaseVal={
   uid:JSON.parse(userInfo).user_detail.id
 }
   const navigation = useNavigation();
+  
+  let flag=route.params.flag;
+  
+
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let courseId = route.params.courseId;
   const [getData, setData] = useState([]);
@@ -94,7 +98,14 @@ const handleClick=(item)=>{
    });
 }
 
-
+const handleClick2=async (item)=>{
+  let type =item.type;
+  let id =item.id;
+  let subject=item.sub_name;
+  await navigation.navigate('Subject',{
+     type,id,subject,flag
+   });
+}
   useEffect(() => {
     navigation.setOptions({title: route.params.courseName});
     handleFetchData();
@@ -115,7 +126,9 @@ const handleClick=(item)=>{
           renderItem={({item}) => (
            
               <View style={[styles.card, styles.elevation]}>
+              
                 <View style={styles.row}>
+                <TouchableOpacity onPress={() => handleClick2(item)}>
                   <View style={styles.image}>
                   {imageLoading?<Image
                         key={item.id}
@@ -129,6 +142,7 @@ const handleClick=(item)=>{
                       
                     />}
                   </View>
+                  </TouchableOpacity>
                   <View style={styles.row}>
                     <Text style={[styles.title, styles.text]}>
                       {item.sub_name}
@@ -147,6 +161,7 @@ const handleClick=(item)=>{
                     </Text>
                   </View>
                 </View>
+            
                 <View style={styles.description2}>
                   <Text style={styles.descriptionText}>
                     {item.description.replace(regex, '')}

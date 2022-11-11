@@ -32,8 +32,9 @@ const MyPurchase = () => {
     let type =item.type;
     let id =item.id;
     let subject=item.sub_name;
+    let flag=0;
     await navigation.navigate('Subject',{
-       type,id,subject
+       type,id,subject,flag
      });
   }
   const description=(item)=>{

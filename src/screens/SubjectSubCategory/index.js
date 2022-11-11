@@ -14,10 +14,13 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './style';
 
 const SubjectSubCategory = ({route}) => {
+  let flag=route.params.flag;
+
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let id = route.params.id;
   let type = route.params.type;
+  
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [activityIndicator, setActivityIndicator] = useState(true);
@@ -40,6 +43,7 @@ const SubjectSubCategory = ({route}) => {
       id,
       type,
       name,
+      flag
     });
   };
   useEffect(() => {

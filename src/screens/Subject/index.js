@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
-import Book from '../../../assets/images/book.jpeg';
+
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import {BottomNavigation} from '../../components/BottomNavigation';
 
 
 const Subject = ({route}) => {
+  let flag=route.params.flag;
   let id = route.params.id;
   let type = route.params.type;
   const navigation = useNavigation();
@@ -29,6 +30,7 @@ const Subject = ({route}) => {
       courseId: courseId,
       type: type,
       name: name,
+      flag:flag
     });
   };
   const handleClick2 = async (item) => {
@@ -41,6 +43,7 @@ const Subject = ({route}) => {
       type,
       name,
       category,
+      flag
     });
   };
   const [getData, setData] = useState([]);

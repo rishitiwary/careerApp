@@ -14,7 +14,10 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './style';
 
 const Description = ({route}) => {
+  let flag=route.params.flag;
+
   const navigation = useNavigation();
+ 
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let video = route.params.video;
   let description = route.params.description;
@@ -22,7 +25,7 @@ const Description = ({route}) => {
   const playerRef = useRef(null);
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const fullscreen = () => {
     setPlaying(false);
@@ -72,7 +75,7 @@ const Description = ({route}) => {
           marginTop: 10,
          
         }}>
-           <Button title="View In Full Screen" color="#000099" borderRadius="2" onPress={()=>fullscreen()}/>
+           <Button title="View In Full Screen" color="#000099"  borderRadius="2" onPress={()=>fullscreen()}/>
         <Text style={{color: 'black',justifyContent:'flex-start'}}>{description.replace(regex, '')}</Text>
       </View>
     </View>

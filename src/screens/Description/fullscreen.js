@@ -6,23 +6,20 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   useWindowDimensions,
-  StatusBar
+  StatusBar,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import styles from './style';
 
 const Fullscreen = ({route}) => {
- 
-  const navigation = useNavigation();
   let video = route.params.video;
- 
+
   const [activityIndicator, setActivityIndicator] = useState(true);
   const playerRef = useRef(null);
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
-  const [playing, setPlaying] = useState(false);
- 
+  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
     setActivityIndicator(false);
@@ -30,8 +27,7 @@ const Fullscreen = ({route}) => {
 
   return (
     <View style={styles.fullscreen}>
-      <StatusBar
-        hidden={true} />
+      <StatusBar hidden={true} />
       {activityIndicator ? (
         <ActivityIndicator
           color="#000099"
@@ -53,14 +49,12 @@ const Fullscreen = ({route}) => {
             modestbranding: 'false',
             preventFullScreen: 'true',
             frameborder: 'false',
-            
           }}
         />
 
         <TouchableOpacity style={styles.hideSharefullScreen} />
         <TouchableOpacity style={styles.hideSharefullScreenleft} />
       </View>
-     
     </View>
   );
 };

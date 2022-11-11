@@ -4,6 +4,7 @@ import {ScrollView,View,Text,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 export  const Topmenu=()=>{
+  let flag=0;
   const navigation = useNavigation();
     return(
 <ScrollView
@@ -22,7 +23,7 @@ export  const Topmenu=()=>{
           <Text style={styles.text1}>All Course</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('FreeVideos')}>
+        <TouchableOpacity onPress={()=>navigation.navigate('FreeVideos',{flag:flag})}>
         <View style={styles.view}>
           <Text style={styles.text1}>Free Videos</Text>
         </View>

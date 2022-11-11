@@ -6,15 +6,15 @@ import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
- 
 const Category = () => {
   const navigation = useNavigation();
   const handleClick = item => {
     let courseId = item.id;
     let courseName = item.course_name;
-    navigation.navigate('Course',{courseId:courseId,courseName:courseName});
+    let flag=1;
+    navigation.navigate('Course',{courseId:courseId,courseName:courseName,flag});
   };
- 
+  
   const [getData, setData] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
   const [activityIndicator,setActivityIndicator]=useState(true);

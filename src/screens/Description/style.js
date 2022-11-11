@@ -185,17 +185,25 @@ const styles = StyleSheet.create({
   },
   hideSharefullScreen: {
     top: 0,
+    right:0,
+    left:0,
     margin: 0,
     height: 60,
-    width: '100%',
+    width: '200%',
     position: 'absolute',
+    backgroundColor:'transparent'
   },
   hideSharefullScreenleft: {
+  
+    right:0,
+    left:0,
     bottom: 0,
+    margin: 0,
     marginBottom: 70,
-    height: 60,
-    width: '100%',
+    height: 80,
+    width: '180%',
     position: 'absolute',
+    backgroundColor:'transparent'
      
   },
   fullscreen: {

@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
-import Book from '../../../assets/images/book.jpeg';
 import {
   View,
   Text,
@@ -15,10 +14,13 @@ import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 
 const SubjectCategory = ({route}) => {
+  let flag=route.params.flag;
+
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let id = route.params.courseId;
   let type = route.params.type;
+ 
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [activityIndicator, setActivityIndicator] = useState(true);
@@ -41,6 +43,7 @@ const SubjectCategory = ({route}) => {
       id,
       type,
       name,
+      flag
     });
   };
   useEffect(() => {

@@ -17,13 +17,19 @@ import { DownloadPdf } from '../../components/DownloadPdf';
 // import ImagePlaceholder from 'react-native-img-placeholder';
 
 const Videobysubject = ({route}) => {
+  let flag=route.params.flag;
+
+
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
+  const [flags, setFlag] = useState(flag);
+ 
   const [activityIndicator, setActivityIndicator] = useState(true);
   let url;
   let pageName;
+  
   if(route.name=='FreeVideos'){
      url =  `${BASE_URL}/getFreeVideos`;
     pageName='Free Videos';
@@ -51,6 +57,7 @@ const Videobysubject = ({route}) => {
    await navigation.navigate('Description', {
       video,
       description,
+      flag
     });
   };
   const ViewPdf=(item)=>{
@@ -60,6 +67,7 @@ const Videobysubject = ({route}) => {
   }
   useEffect(() => {
     navigation.setOptions({title: pageName});
+    setFlag(flag);
     handleFetchData;
     setActivityIndicator(false);
   }, []);
@@ -80,14 +88,9 @@ const Videobysubject = ({route}) => {
         renderItem={({item}) => (
           <View style={[styles.card, styles.elevation]}>
          
-            <TouchableOpacity onPress={() => handleClick(item)}>
+            <TouchableOpacity onPress={() => handleClick(item)} disabled={flags==1?true:false} >
               <View style={styles.image}>
-              {/* <ImagePlaceholder
-               key={item.id}
-                           style={styles.image}
-    loadingStyle={{ size: 'large', color: 'blue' }}
-    source={{ uri: `${IMG_URL + item.thumbnail}` }}
-/> */}
+            
               {imageLoading?<Image
                         key={item.id}
                         source={require('../../../assets/images/placeholder.jpeg')}
@@ -107,12 +110,12 @@ const Videobysubject = ({route}) => {
 
             </View>
             <View style={styles.row}>
-    <TouchableOpacity onPress={()=>ViewPdf(item)}>
+    <TouchableOpacity onPress={()=>ViewPdf(item)} disabled={flags==1?true:false}>
       <View style={styles.buynow}>
         <Text style={{color: 'white'}}>View PDF</Text>
       </View>
     </TouchableOpacity>
-    <TouchableOpacity onPress={()=>DownloadPdf(item.pdfs)}>
+    <TouchableOpacity onPress={()=>DownloadPdf(item.pdfs)} disabled={flags==1?true:false}>
       <View style={styles.demo}>
         <Text style={{color: 'white'}}>Download PDF</Text>
       </View>
