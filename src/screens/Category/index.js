@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
-import {View, Text, FlatList, TouchableOpacity, Image,ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
@@ -11,13 +18,17 @@ const Category = () => {
   const handleClick = item => {
     let courseId = item.id;
     let courseName = item.course_name;
-    let flag=1;
-    navigation.navigate('Course',{courseId:courseId,courseName:courseName,flag});
+    let flag = 1;
+    navigation.navigate('Course', {
+      courseId: courseId,
+      courseName: courseName,
+      flag,
+    });
   };
-  
+
   const [getData, setData] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
-  const [activityIndicator,setActivityIndicator]=useState(true);
+  const [activityIndicator, setActivityIndicator] = useState(true);
   const handleFetchData = async () => {
     let result = await axios({
       method: 'GET',
@@ -31,18 +42,22 @@ const Category = () => {
   };
 
   useEffect(() => {
-    navigation.setOptions({'title':'All Course'});
+    navigation.setOptions({title: 'All Course'});
     handleFetchData();
     setActivityIndicator(false);
   }, []);
 
   return (
     <View style={styles.container}>
-         {activityIndicator?<ActivityIndicator
-        color="#000099"
-        size="large"
-        style={styles.activityIndicator}
-      />:''} 
+      {activityIndicator ? (
+        <ActivityIndicator
+          color="#000099"
+          size="large"
+          style={styles.activityIndicator}
+        />
+      ) : (
+        ''
+      )}
       <View style={styles.header}>
         <Topmenu />
       </View>
@@ -58,27 +73,25 @@ const Category = () => {
                     flex: 2,
                     justifyContent: 'space-evenly',
                     paddingBottom: 50,
-                    paddingHorizontal:10
+                    paddingHorizontal: 10,
                   }}>
-                    {imageLoading?<Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={()=>setImageLoading(false)}
-                      />:<Image
+                  {imageLoading ? (
+                    <Image
+                      key={item.id}
+                      source={require('../../../assets/images/book.jpeg')}
+                      style={styles.image}
+                      onLoad={() => setImageLoading(false)}
+                    />
+                  ) : (
+                    <Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
-                    />}
+                    />
+                  )}
                 </View>
-                <View
-                  style={{
-                    flex: 25,
-                    justifyContent: 'center',
-                    alignItems:'flex-start',
-                    paddingTop: 100,
-                  }}>
-                  <Text style={styles.cardText}>{item.course_name}</Text>
+                <View style={styles.text}>
+                  <Text style={styles.cardText} numberOfLines={2}>{item.course_name}</Text>
                 </View>
               </View>
             </TouchableOpacity>

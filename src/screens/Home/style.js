@@ -1,6 +1,6 @@
 import COLORS from '../../config/colors';
 import {Dimensions, StyleSheet, Platform} from 'react-native';
-const {height,width} = Dimensions.get('screen');
+const {height, width} = Dimensions.get('screen');
 const height_logo = height * 0.1;
 
 const styles = StyleSheet.create({
@@ -38,9 +38,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    minWidth:'100%'
-  
-    
+    minWidth: '100%',
   },
   input: {
     borderColor: COLORS.primary,
@@ -119,54 +117,48 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-   margin:5,
-    width: Dimensions.get('window').width /1.03,
-    height: Dimensions.get('window').height / 2.5,
+    margin: 2,
+    width: Dimensions.get('window').width / 1.01,
+    height: Dimensions.get('window').height / 2.7,
     borderRadius: 10,
-    backgroundColor:COLORS.white,
-    
+    backgroundColor: COLORS.white,
   },
   cardText: {
     fontSize: 18,
-    fontWeight:'bold',
+    fontWeight: 'bold',
     color: 'red',
-    marginVertical:20,
-    marginHorizontal:10,
-    justifyContent:'flex-start',
-
+    marginVertical: 10,
+    marginHorizontal: 10,
+    justifyContent: 'flex-start',
   },
-  image:{
-   paddingHorizontal:10,
-   paddingVertical:15,
+  image: {
+    paddingHorizontal: 10,
+    paddingVertical: 15,
     width: Dimensions.get('window').width / 1.1,
     height: Dimensions.get('window').height / 3.5,
-    borderRadius:5 ,
-    resizeMode: 'contain' 
+    borderRadius: 5,
+    resizeMode: 'contain',
   },
-  elevation: {  
-    shadowColor: '#52006A',  
-    elevation: 10,  
-  },  
+  elevation: {
+    shadowColor: '#52006A',
+    elevation: 10,
+  },
   headerBanner: {
     flex: 0.4,
-    width:width,
-    backgroundColor:COLORS.bgColor,
- 
+    width: width,
+    backgroundColor: COLORS.bgColor,
   },
   headerText: {
-    flex:2,
-    color:COLORS.white,
-    marginVertical:20,
-    paddingHorizontal:10,
-    fontSize:20,
-    fontWeight:'bold'
- 
+    flex: 2,
+    color: COLORS.white,
+    marginVertical: 20,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  descriptionText:{
-   
-    fontSize:14,
-    color:COLORS.dark
-    
+  descriptionText: {
+    fontSize: 14,
+    color: COLORS.dark,
   },
 });
 export default styles;

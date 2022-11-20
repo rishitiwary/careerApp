@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text,View,Image,StatusBar,StyleSheet, LogBox} from 'react-native';
+import {Image,StatusBar} from 'react-native';
 import style from './style'
 import * as Animatable from 'react-native-animatable';
-import Logo from '../../../assets/images/logo.png';
+import Logo from '../../../assets/images/career.gif';
   const SplashScreen =()=>{
     return (
         <Animatable.View style={style.container}
@@ -10,7 +10,7 @@ import Logo from '../../../assets/images/logo.png';
         >
          <StatusBar hidden={true}/>
          <Image source={Logo} style={style.logo}/>
-            <Text style={style.text}>Welcome To Career Foundation</Text>
+            {/* <Text style={style.text}>Welcome To Career Foundation</Text> */}
         </Animatable.View>
     )
 }

@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center',
+    
+  },
+  opacity:{
+    opacity:0.65
   },
   logo: {
     height: height_logo,
@@ -34,12 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  title: {
-    fontSize: 24,
-    fontWeight: 'bolder',
-    marginTop: -20,
-    color: COLORS.dark,
-  },
+
 
   button: {
     alignItems: 'flex-end',
@@ -106,11 +105,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   card: {
-    marginHorizontal: 10,
-    marginVertical: 10,
+    marginHorizontal: 3,
+    marginVertical: 2.7,
     padding: 10,
-    width: Dimensions.get('window').width / 1.1,
-    height: Dimensions.get('window').height / 2.3,
+    width: Dimensions.get('window').width / 1.05,
+    height: Dimensions.get('window').height / 2.7,
     borderRadius: 10,
     backgroundColor: COLORS.white,
   },
@@ -118,10 +117,10 @@ const styles = StyleSheet.create({
   image: {
     paddingHorizontal: 5,
     paddingVertical: 5,
-    width: Dimensions.get('window').width / 1.2,
-    height: Dimensions.get('window').height / 4.2,
+    width: Dimensions.get('window').width / 1.15,
+    height: Dimensions.get('window').height / 5.2,
     borderRadius:5,
-    resizeMode: 'contain'
+    resizeMode: 'stretch'
   },
   elevation: {
     shadowColor: '#52006A',
@@ -151,10 +150,10 @@ const styles = StyleSheet.create({
     
   },
   title: {
-   
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
     color: COLORS.dark,
+    textTransform:'capitalize'
   },
   descriptionText: {
     paddingVertical: 5,

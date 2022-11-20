@@ -174,7 +174,7 @@ const Register = () => {
           ) : null}
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="envelope-o" color="#05375a" size={20} />
 
           <TextInput
             placeholder="Email Address"
@@ -190,7 +190,7 @@ const Register = () => {
           ) : null}
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="address-card-o" color="#05375a" size={20} />
 
           <TextInput
             placeholder="Address"
@@ -198,6 +198,7 @@ const Register = () => {
             autoCapitalize="none"
             onChangeText={val => addressInputChange(val)}
             placeholderTextColor="#000"
+           
           />
           {data.check_addressInputChange ? (
             <Animatable.View animation="bounceIn">
@@ -206,7 +207,7 @@ const Register = () => {
           ) : null}
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="mobile" color="#05375a" size={20} />
 
           <TextInput
             placeholder="Mobile Number"
@@ -214,6 +215,7 @@ const Register = () => {
             autoCapitalize="none"
             onChangeText={val => mobileInputChange(val)}
             placeholderTextColor="#000"
+            keyboardType='numeric'
           />
           {data.check_mobileInputChange ? (
             <Animatable.View animation="bounceIn">

@@ -10,8 +10,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Topmenu} from '../../components/Topmenu';
-import styles from './style';
+import styles from '../MyPurchase/style';
 
 const SubjectCategory = ({route}) => {
   let flag=route.params.flag;
@@ -19,7 +18,6 @@ const SubjectCategory = ({route}) => {
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let id = route.params.courseId;
-  let type = route.params.type;
  
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
@@ -67,6 +65,8 @@ const SubjectCategory = ({route}) => {
       <View style={styles.footer}>
         <FlatList
           data={getData.data}
+          initialNumToRender={4}
+          keyExtractor={(item) => item.id}
           renderItem={({item}) => (
             <View style={[styles.card, styles.elevation]}>
               <View style={styles.row}>

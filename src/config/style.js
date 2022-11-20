@@ -41,7 +41,7 @@ export default {
     flexWrap: "wrap",
     flexDirection: "row",
     height: Dimensions.get('window').height / 12,
-    width: '100%',
+    width: Dimensions.get('window').width,
     backgroundColor: COLORS.bgColor,
     color: COLORS.white,
     alignItems: 'center',

@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) => {
       email: data.email,
       phone: data.mobile,
       device_type: data.device_type,
-      confirm_password: data.confirm_password,
+      pass: data.confirm_password,
     };
 
     await axios({
@@ -31,8 +31,7 @@ export const AuthProvider = ({children}) => {
     })
       .then(function (response) {
         let result = JSON.stringify(response.data.message);
-        setUserInfo(result);
-        AsyncStorage.setItem('userInfo', result);
+        setMessage(JSON.parse(result));
         setIsLoading(false);
       })
       .catch(function (error) {

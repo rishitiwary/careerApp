@@ -24,6 +24,7 @@ const SubjectSubCategory = ({route}) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [activityIndicator, setActivityIndicator] = useState(true);
+  const [flags, setFlag] = useState(flag);
   const handleFetchData = useMemo(async () => {
     let result = await axios({
       method: 'GET',
@@ -48,6 +49,7 @@ const SubjectSubCategory = ({route}) => {
   };
   useEffect(() => {
     navigation.setOptions({title: route.params.name});
+    setFlag(flag);
     handleFetchData;
     setActivityIndicator(false);
   }, []);
@@ -65,9 +67,14 @@ const SubjectSubCategory = ({route}) => {
       )}
       <View style={styles.footer}>
         <FlatList
+        style={flag == 1 ? styles.opacity : ''}
           data={getData.data}
+          initialNumToRender={4}
+          keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={() => handleClick(item)}>
+            <TouchableOpacity onPress={() => handleClick(item)}
+            disabled={flags == 1 ? true : false}
+            >
               <View style={[styles.card, styles.elevation]}>
                 <View
                   style={{
@@ -92,10 +99,10 @@ const SubjectSubCategory = ({route}) => {
                     flex: 20,
                     justifyContent: 'space-evenly',
                     alignItems: 'flex-start',
-                    paddingLeft: 10,
-                    paddingTop: 100,
+                    paddingLeft: 5,
+                    paddingTop: 90,
                   }}>
-                  <Text style={styles.cardText}>{item.video_categories}</Text>
+                  <Text style={styles.cardText} numberOfLines={2}>{item.video_categories}</Text>
                 </View>
               </View>
             </TouchableOpacity>

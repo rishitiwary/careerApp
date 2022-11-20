@@ -1,6 +1,9 @@
 import COLORS from '../../config/colors';
+import {Dimensions} from 'react-native';
+const {height,width} = Dimensions.get('screen');
 export default {
     container:{
+        
         flex:1,
         alignItems: 'center', 
         justifyContent: 'center',
@@ -8,13 +11,10 @@ export default {
         
     },
     logo:{
-        height:150,
-        width:150,
+        flex:1,
+        height:height,
+        width:width,
+        resizeMode: 'stretch'
     },
-    text:{
-        paddingTop:20,
-        color:'#fff',
-        fontSize:22,
-        
-    }
+   
 }

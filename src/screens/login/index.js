@@ -82,10 +82,10 @@ const Login = () => {
       </Animatable.View>
 
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
-        <Text style={styles.title}>Sing in with accounts</Text>
+        <Text style={styles.title}>Sign in with accounts</Text>
         <Text style={styles.text_footer}>Email</Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="envelope-o" color="#05375a" size={20} />
 
           <TextInput
             placeholder="Your Email"

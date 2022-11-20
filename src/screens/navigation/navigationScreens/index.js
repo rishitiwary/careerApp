@@ -18,6 +18,7 @@ import ViewPdf from '../../ViewPdf';
 import TestSeries from '../../TestSeries';
 import Books from '../../Books';
 import Jobs from '../../Jobs';
+
 const Stack = createNativeStackNavigator();
 const NavigationScreens = () => {
  
@@ -99,6 +100,7 @@ const NavigationScreens = () => {
         name="Live"
         component={Live}
       />
+        
     </Stack.Navigator>
   );
 };

@@ -117,27 +117,28 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     flexDirection: 'row',
-    marginBottom: 10,
-    marginRight: 10,
-    marginLeft: 10,
+    marginBottom: 5,
+    marginHorizontal: 10,
     padding: 5,
     width: Dimensions.get('window').width / 2.3,
-    height: Dimensions.get('window').height / 3.5,
+    height: Dimensions.get('window').height / 4.2,
     borderRadius: 10,
     backgroundColor:COLORS.white,
     
   },
   cardText: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight:'bold',
     color: 'black',
-    marginTop:5,
     justifyContent:'flex-start',
+    marginBottom:-50
 
+  },
+  opacity:{
+    opacity:0.65
   },
   image:{
     marginHorizontal:10,
-    marginTop:-30,
     width: Dimensions.get('window').width / 3.5,
     height: Dimensions.get('window').height / 7,
     resizeMode: 'contain'
@@ -179,6 +180,27 @@ const styles = StyleSheet.create({
       flexWrap: "wrap",
       justifyContent:'space-between',
       marginLeft:Dimensions.get('window').width / 2.5,
+    },
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      borderRadius: 20,
+      padding: 35,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5
     },
 });
 export default styles;

@@ -9,41 +9,42 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
-  Alert
+  Modal,
+  Pressable,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
 
-
 const Subject = ({route}) => {
-  let flag=route.params.flag;
+  let flag = route.params.flag;
   let id = route.params.id;
   let type = route.params.type;
+
   const navigation = useNavigation();
-  const handleClick = async (item) => {
+  const handleClick = async item => {
     let courseId = item.id;
     let type = item.type;
     let name = item.subname;
-  await  navigation.navigate('SubjectCategory', {
+    await navigation.navigate('SubjectCategory', {
       courseId: courseId,
       type: type,
       name: name,
-      flag:flag
+      flag: flag,
     });
   };
-  const handleClick2 = async (item) => {
+  const handleClick2 = async item => {
     let id = item.id;
     let category = item.category;
     let type = item.type;
     let name = item.subname;
-  await  navigation.navigate('Videobysubject', {
+    await navigation.navigate('Videobysubject', {
       id,
       type,
       name,
       category,
-      flag
+      flag,
     });
   };
   const [getData, setData] = useState([]);
@@ -70,14 +71,15 @@ const Subject = ({route}) => {
 
   return (
     <View style={styles.container}>
-      {activityIndicator ?
+      {activityIndicator ? (
         <ActivityIndicator
           color="#000099"
           size="large"
           style={styles.activityIndicator}
         />
-       : ''
-      }
+      ) : (
+        ''
+      )}
       <View style={styles.header}>
         <Topmenu />
       </View>
@@ -86,6 +88,8 @@ const Subject = ({route}) => {
         {type == 'new' ? (
           <FlatList
             data={getData.data}
+            initialNumToRender={4}
+            keyExtractor={(item) => item.id}
             renderItem={({item}) => (
               <TouchableOpacity onPress={() => handleClick(item)}>
                 <View style={[styles.card, styles.elevation]}>
@@ -93,29 +97,27 @@ const Subject = ({route}) => {
                     style={{
                       flex: 2,
                       justifyContent: 'space-evenly',
+                      alignItems: 'center',
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                     {imageLoading?<Image
+                    {imageLoading ? (
+                      <Image
                         key={item.id}
                         source={require('../../../assets/images/book.jpeg')}
                         style={styles.image}
-                        onLoad={()=>setImageLoading(false)}
-                      />:<Image
-                      key={item.id}
-                      source={{uri: `${IMG_URL + item.images}`}}
-                      style={styles.image}
-                    />}
-                  </View>
-                  <View
-                    style={{
-                      flex: 20,
-                      justifyContent: 'space-evenly',
-                      alignItems: 'flex-start',
-                      paddingLeft: 10,
-                      paddingTop: 100,
-                    }}>
-                    <Text style={styles.cardText}>{item.subname} </Text>
+                        onLoad={() => setImageLoading(false)}
+                      />
+                    ) : (
+                      <Image
+                        key={item.id}
+                        source={{uri: `${IMG_URL + item.images}`}}
+                        style={styles.image}
+                      />
+                    )}
+                    <Text style={styles.cardText} numberOfLines={2}>
+                      {item.subname}{' '}
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -125,38 +127,40 @@ const Subject = ({route}) => {
           />
         ) : (
           <FlatList
+            style={flag == 1 ? styles.opacity : ''}
             data={getData.data}
+            initialNumToRender={4}
+            keyExtractor={item => item.id}
             renderItem={({item}) => (
-              <TouchableOpacity onPress={() => handleClick2(item)}>
+              <TouchableOpacity
+                onPress={() => handleClick2(item)}
+                disabled={flag == 1 ? true : false}>
                 <View style={[styles.card, styles.elevation]}>
                   <View
                     style={{
                       flex: 2,
                       justifyContent: 'space-evenly',
+                      alignItems: 'center',
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                  
-        {imageLoading?<Image
+                    {imageLoading ? (
+                      <Image
                         key={item.id}
                         source={require('../../../assets/images/book.jpeg')}
                         style={styles.image}
-                        onLoad={()=>setImageLoading(false)}
-                      />:<Image
-                      key={item.id}
-                      source={{uri: `${IMG_URL + item.images}`}}
-                      style={styles.image}
-                    />}
-                  
-                  </View>
-                  <View
-                    style={{
-                      flex: 10,
-                      justifyContent: 'space-evenly',
-                      alignItems: 'flex-start',
-                      paddingTop: 100,
-                    }}>
-                    <Text style={styles.cardText}>{item.subname} </Text>
+                        onLoad={() => setImageLoading(false)}
+                      />
+                    ) : (
+                      <Image
+                        key={item.id}
+                        source={{uri: `${IMG_URL + item.images}`}}
+                        style={styles.image}
+                      />
+                    )}
+                    <Text style={styles.cardText} numberOfLines={2}>
+                      {item.subname}{' '}
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -166,6 +170,7 @@ const Subject = ({route}) => {
           />
         )}
       </View>
+
       <BottomNavigation />
     </View>
   );

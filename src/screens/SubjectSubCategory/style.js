@@ -124,15 +124,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     padding: 10,
     width: Dimensions.get('window').width / 2.3,
-    height: Dimensions.get('window').height / 4,
+    height: Dimensions.get('window').height / 4.4,
     borderRadius: 10,
     backgroundColor: COLORS.white,
   },
   cardText: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
     color: 'black',
-    marginTop: 10,
+    paddingTop: 20,
     justifyContent: 'flex-start',
   },
   image: {
@@ -141,6 +141,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 3.5,
     height: Dimensions.get('window').height / 6.8,
     resizeMode: 'contain'
+  },
+  opacity:{
+    opacity:0.65
   },
   elevation: {
     shadowColor: '#52006A',

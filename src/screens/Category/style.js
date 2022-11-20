@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    paddingTop: 20,
-    color: '#fff',
-    fontSize: 25,
+flex:25,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingTop: height/7,
   },
 
   header: {
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     
   },
   cardText: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight:'bold',
     color: 'black',
     marginTop:10,
