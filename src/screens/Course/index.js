@@ -8,7 +8,6 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from '../MyPurchase/style';
@@ -118,43 +117,33 @@ const Course = ({route}) => {
   useEffect(() => {
     navigation.setOptions({title: route.params.courseName});
     handleFetchData();
-    setActivityIndicator(false);
+ 
   }, []);
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
+    
 
       <View style={styles.footer}>
         <FlatList
           data={getData.data}
+          keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <View style={[styles.card, styles.elevation]}>
               <View style={styles.row}>
                 <TouchableOpacity onPress={() => handleClick2(item)}>
                   <View style={styles.image}>
-                    {imageLoading ? (
-                      <Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={() => setImageLoading(false)}
-                      />
-                    ) : (
+                   
                       <Image
                         key={item.id}
                         source={{uri: `${IMG_URL + item.images}`}}
                         style={styles.image}
                       />
-                    )}
+                   
                   </View>
                 </TouchableOpacity>
                 <View style={styles.row}>

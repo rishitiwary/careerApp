@@ -7,21 +7,21 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
+
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from '../MyPurchase/style';
 
 const SubjectCategory = ({route}) => {
-  let flag=route.params.flag;
+  let flag = route.params.flag;
 
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   let id = route.params.courseId;
- 
+
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
-  const [activityIndicator, setActivityIndicator] = useState(true);
+
   const handleFetchData = useMemo(async () => {
     let result = await axios({
       method: 'GET',
@@ -33,60 +33,47 @@ const SubjectCategory = ({route}) => {
 
     setData(result.data);
   });
-  const handleClick = async(item) => {
+  const handleClick = async item => {
     let id = item.id;
     let type = item.type;
     let name = item.subname;
-   await navigation.navigate('SubjectSubCategory', {
+    await navigation.navigate('SubjectSubCategory', {
       id,
       type,
       name,
-      flag
+      flag,
     });
   };
   useEffect(() => {
     navigation.setOptions({title: route.params.name});
     handleFetchData;
-    setActivityIndicator(false);
   }, []);
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
-
       <View style={styles.footer}>
         <FlatList
           data={getData.data}
-          initialNumToRender={4}
           keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <View style={[styles.card, styles.elevation]}>
               <View style={styles.row}>
                 <View style={styles.image}>
-                {imageLoading?<Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={()=>setImageLoading(false)}
-                      />:<Image
+               
+                    <Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
-                    />}
-                  
+                    />
+               
                 </View>
                 <View style={styles.row}>
                   <Text style={[styles.title, styles.text]}>
                     {item.subname}
-                  
                   </Text>
                 </View>
               </View>

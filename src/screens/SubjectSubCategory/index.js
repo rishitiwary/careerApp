@@ -8,11 +8,11 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
+   
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
-
+ 
 const SubjectSubCategory = ({route}) => {
   let flag=route.params.flag;
 
@@ -23,9 +23,10 @@ const SubjectSubCategory = ({route}) => {
   
   const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
-  const [activityIndicator, setActivityIndicator] = useState(true);
+ 
   const [flags, setFlag] = useState(flag);
   const handleFetchData = useMemo(async () => {
+ 
     let result = await axios({
       method: 'GET',
       url: `${BASE_URL}/subjectfolder/${id}`,
@@ -35,6 +36,7 @@ const SubjectSubCategory = ({route}) => {
     });
 
     setData(result.data);
+    
   });
   const handleClick = async(item) => {
     let id = item.id;
@@ -51,26 +53,21 @@ const SubjectSubCategory = ({route}) => {
     navigation.setOptions({title: route.params.name});
     setFlag(flag);
     handleFetchData;
-    setActivityIndicator(false);
+    
   }, []);
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
+           
       <View style={styles.footer}>
         <FlatList
         style={flag == 1 ? styles.opacity : ''}
           data={getData.data}
-          initialNumToRender={4}
           keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <TouchableOpacity onPress={() => handleClick(item)}
             disabled={flags == 1 ? true : false}
@@ -83,16 +80,11 @@ const SubjectSubCategory = ({route}) => {
                     paddingBottom: 50,
                     paddingHorizontal: 10,
                   }}>
-                 {imageLoading?<Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={()=>setImageLoading(false)}
-                      />:<Image
+                  <Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
-                    />}
+                    /> 
                 </View>
                 <View
                   style={{

@@ -1,4 +1,4 @@
-package com.career.newarchitecture;
+package com.careerfoundation.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.career.BuildConfig;
-import com.career.newarchitecture.components.MainComponentsRegistry;
-import com.career.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.careerfoundation.BuildConfig;
+import com.careerfoundation.newarchitecture.components.MainComponentsRegistry;
+import com.careerfoundation.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

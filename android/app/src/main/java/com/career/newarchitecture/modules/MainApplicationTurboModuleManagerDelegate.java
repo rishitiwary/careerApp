@@ -1,4 +1,4 @@
-package com.career.newarchitecture.modules;
+package com.careerfoundation.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

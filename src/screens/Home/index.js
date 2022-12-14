@@ -3,9 +3,8 @@ import {
   View,
   Text,
   FlatList,
-  Image,
-  TouchableOpacity,
   ToastAndroid,
+  Image
 } from 'react-native';
 import {AuthContext} from '../../components/AuthContext';
 import axios from 'axios';
@@ -14,7 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
-
+ 
 const HomeScreen = () => {
   const {singOut, userInfo} = React.useContext(AuthContext);
   let deviceid = JSON.parse(userInfo).user_detail.deviceId;
@@ -49,8 +48,12 @@ const HomeScreen = () => {
       });
       console.log(deviceResponse.status);
     } catch (error) {
-     ToastAndroid.show("Please logout from other devices !", ToastAndroid.LONG);
-      singOut();
+      console.log(error);
+      // ToastAndroid.show(
+      //   'Please logout from other devices !',
+      //   ToastAndroid.LONG,
+      // );
+      // singOut();
     }
   };
 
@@ -68,16 +71,22 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.footer}>
+     
         <FlatList
           data={getData.data}
-          initialNumToRender={4}
           keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <View style={[styles.card, styles.elevation]}>
               <View style={[styles.image]}>
                 <Image
+               
                   source={{uri: `${IMG_URL + item.image}`}}
                   style={styles.image}
+                  resizeMode="cover"
                 />
                 <Text style={styles.cardText}>
                   {item.title.replace(regex, '')}

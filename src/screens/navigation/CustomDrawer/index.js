@@ -20,7 +20,8 @@ const CustomDrawer=(props)=>{
       <ImageBackground source={require('../../../../assets/images/menu-bg.jpeg')} style={{padding:20}}>
 <Image source={require('../../../../assets/images/user-profile.jpeg')} style={{height:80,width:80,borderRadius:40,marginBottom:10}}/>
  <Text style={{color:'#fff',fontSize:18,fontFamily:'Roboto-Medium',textTransform: 'capitalize'}}>Hello {JSON.parse(userInfo).user_detail.username}</Text>
-       <View style={{flexDirection:'row'}}>
+       <View style={{flexDirection:'column'}}>
+       <Text style={{color:'#fff',fontSize:16,fontFamily:'Roboto-Regular'}}> <FontAwesome5 name="envelope" size={14} color='#fff'/>  {JSON.parse(userInfo).user_detail.email}</Text>
        <Text style={{color:'#fff',fontSize:16,fontFamily:'Roboto-Regular'}}> <FontAwesome5 name="mobile" size={14} color='#fff'/>  {JSON.parse(userInfo).user_detail.phone}</Text>
        </View>
      

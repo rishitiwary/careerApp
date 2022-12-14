@@ -2,16 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
 
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  ActivityIndicator,
-  Modal,
-  Pressable,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
@@ -48,8 +39,6 @@ const Subject = ({route}) => {
     });
   };
   const [getData, setData] = useState([]);
-  const [imageLoading, setImageLoading] = useState(true);
-  const [activityIndicator, setActivityIndicator] = useState(true);
   const handleFetchData = useMemo(async () => {
     let url = `${BASE_URL}/getSubjectById/${id}`;
     let result = await axios({
@@ -66,20 +55,10 @@ const Subject = ({route}) => {
   useEffect(() => {
     navigation.setOptions({title: route.params.subject});
     handleFetchData;
-    setActivityIndicator(false);
   }, []);
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
       <View style={styles.header}>
         <Topmenu />
       </View>
@@ -88,8 +67,11 @@ const Subject = ({route}) => {
         {type == 'new' ? (
           <FlatList
             data={getData.data}
-            initialNumToRender={4}
             keyExtractor={(item) => item.id}
+            removeClippedSubviews
+            initialNumToRender={4}
+            nestedScrollEnabled
+            scrollEnabled={true}
             renderItem={({item}) => (
               <TouchableOpacity onPress={() => handleClick(item)}>
                 <View style={[styles.card, styles.elevation]}>
@@ -101,20 +83,12 @@ const Subject = ({route}) => {
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                    {imageLoading ? (
-                      <Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={() => setImageLoading(false)}
-                      />
-                    ) : (
-                      <Image
-                        key={item.id}
-                        source={{uri: `${IMG_URL + item.images}`}}
-                        style={styles.image}
-                      />
-                    )}
+                    <Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />
+
                     <Text style={styles.cardText} numberOfLines={2}>
                       {item.subname}{' '}
                     </Text>
@@ -144,20 +118,12 @@ const Subject = ({route}) => {
                       paddingBottom: 50,
                       paddingHorizontal: 10,
                     }}>
-                    {imageLoading ? (
-                      <Image
-                        key={item.id}
-                        source={require('../../../assets/images/book.jpeg')}
-                        style={styles.image}
-                        onLoad={() => setImageLoading(false)}
-                      />
-                    ) : (
-                      <Image
-                        key={item.id}
-                        source={{uri: `${IMG_URL + item.images}`}}
-                        style={styles.image}
-                      />
-                    )}
+                    <Image
+                      key={item.id}
+                      source={{uri: `${IMG_URL + item.images}`}}
+                      style={styles.image}
+                    />
+
                     <Text style={styles.cardText} numberOfLines={2}>
                       {item.subname}{' '}
                     </Text>

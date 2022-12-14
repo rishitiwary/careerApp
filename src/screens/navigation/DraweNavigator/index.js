@@ -95,7 +95,7 @@ export default function MyDrawer() {
         options={{
           title: 'Contact Us',
           drawerIcon: ({color}) => (
-            <Ionicons name="person-outline" size={22} color={color} />
+            <Ionicons name="home-outline" size={22} color={color} />
           ),
         }}
       />

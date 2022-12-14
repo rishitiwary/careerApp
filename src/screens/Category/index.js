@@ -13,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Topmenu} from '../../components/Topmenu';
 import styles from './style';
 import {BottomNavigation} from '../../components/BottomNavigation';
+ 
 const Category = () => {
   const navigation = useNavigation();
   const handleClick = item => {
@@ -64,7 +65,13 @@ const Category = () => {
 
       <View style={styles.footer}>
         <FlatList
+         
           data={getData.data}
+          keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <TouchableOpacity onPress={() => handleClick(item)}>
               <View style={[styles.card, styles.elevation]}>
@@ -75,20 +82,13 @@ const Category = () => {
                     paddingBottom: 50,
                     paddingHorizontal: 10,
                   }}>
-                  {imageLoading ? (
-                    <Image
-                      key={item.id}
-                      source={require('../../../assets/images/book.jpeg')}
-                      style={styles.image}
-                      onLoad={() => setImageLoading(false)}
-                    />
-                  ) : (
-                    <Image
+                 
+                      <Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
                     />
-                  )}
+                
                 </View>
                 <View style={styles.text}>
                   <Text style={styles.cardText} numberOfLines={2}>{item.course_name}</Text>

@@ -18,7 +18,7 @@ import ViewPdf from '../../ViewPdf';
 import TestSeries from '../../TestSeries';
 import Books from '../../Books';
 import Jobs from '../../Jobs';
-
+import Chat from '../../Chat'
 const Stack = createNativeStackNavigator();
 const NavigationScreens = () => {
  
@@ -100,7 +100,10 @@ const NavigationScreens = () => {
         name="Live"
         component={Live}
       />
-        
+        <Stack.Screen
+        name="Chat"
+        component={Chat}
+      />
     </Stack.Navigator>
   );
 };

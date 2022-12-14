@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   image: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     paddingVertical: 15,
     width: Dimensions.get('window').width / 1.1,
     height: Dimensions.get('window').height / 3.5,

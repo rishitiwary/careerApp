@@ -1,4 +1,4 @@
-package com.career.newarchitecture.components;
+package com.careerfoundation.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

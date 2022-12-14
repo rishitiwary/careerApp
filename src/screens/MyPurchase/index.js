@@ -13,9 +13,11 @@ const MyPurchase = () => {
   const navigation = useNavigation();
   const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
   const [getData, setData] = useState([]);
+
   const [imageLoading, setImageLoading] = useState(true);
   let id = JSON.parse(userInfo).user_detail.id;
   const handleFetchData = useMemo(async () => {
+   
     let result = await axios({
       method: 'GET',
       url: `${BASE_URL}/getMypurchase/${id}`,
@@ -25,6 +27,7 @@ const MyPurchase = () => {
     });
 
     setData(result.data);
+   
   });
   const handleClick = async item => {
     let type = item.type;
@@ -62,26 +65,22 @@ const MyPurchase = () => {
       <View style={styles.footer}>
         <FlatList
           data={getData.data}
-          initialNumToRender={4}
           keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
           renderItem={({item}) => (
             <View style={[styles.card, styles.elevation]}>
               <View style={styles.row}>
                 <View style={styles.image}>
-                  {imageLoading ? (
-                    <Image
-                      key={item.id}
-                      source={require('../../../assets/images/book.jpeg')}
-                      style={styles.image}
-                      onLoad={() => setImageLoading(false)}
-                    />
-                  ) : (
+                  
                     <Image
                       key={item.id}
                       source={{uri: `${IMG_URL + item.images}`}}
                       style={styles.image}
                     />
-                  )}
+           
                 </View>
                 <View style={styles.row}>
                   <Text  numberOfLines={2} style={[styles.title, styles.text]}>

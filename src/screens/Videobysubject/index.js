@@ -1,30 +1,17 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 import {BASE_URL, IMG_URL} from '../../config/config';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import styles from './style';
 import {DownloadPdf} from '../../components/DownloadPdf';
-// import ImagePlaceholder from 'react-native-img-placeholder';
 
 const Videobysubject = ({route}) => {
   let flag = route.params.flag;
-
   const navigation = useNavigation();
-  const regex = /(&nbsp|amp|quot|lt|gt|;|<([^>]+)>)/gi;
-  const [imageLoading, setImageLoading] = useState(true);
   const [getData, setData] = useState([]);
   const [flags, setFlag] = useState(flag);
-
-  const [activityIndicator, setActivityIndicator] = useState(true);
   let url;
   let pageName;
 
@@ -70,25 +57,18 @@ const Videobysubject = ({route}) => {
     navigation.setOptions({title: pageName});
     setFlag(flag);
     handleFetchData;
-    setActivityIndicator(false);
+    
   }, []);
 
   return (
     <View style={styles.container}>
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
       <FlatList
         data={getData.data}
-        initialNumToRender={5}
-        maxToRenderPerBatch={5}
         keyExtractor={(item) => item.id}
+          removeClippedSubviews
+          initialNumToRender={4}
+          nestedScrollEnabled
+          scrollEnabled={true}
         renderItem={({item}) => (
           <View
             style={[
@@ -100,20 +80,13 @@ const Videobysubject = ({route}) => {
               onPress={() => handleClick(item)}
               disabled={flags == 1 ? true : false}>
               <View style={styles.image}>
-                {imageLoading ? (
-                  <Image
-                    key={item.id}
-                    source={require('../../../assets/images/placeholder.jpeg')}
-                    style={styles.image}
-                    onLoad={() => setImageLoading(false)}
-                  />
-                ) : (
+           
                   <Image
                     key={item.id}
                     source={{uri: `${IMG_URL + item.thumbnail}`}}
                     style={styles.image}
                   />
-                )}
+               
               </View>
             </TouchableOpacity>
             <View
@@ -123,7 +96,9 @@ const Videobysubject = ({route}) => {
                 paddingHorizontal: 20,
                 marginTop: 15,
               }}>
-              <Text style={styles.title} numberOfLines={2}>{item.title}</Text>
+              <Text style={styles.title} numberOfLines={2}>
+                {item.title}
+              </Text>
             </View>
             <View style={styles.row}>
               <TouchableOpacity

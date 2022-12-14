@@ -63,7 +63,7 @@ const Forgot = () => {
         <Text style={styles.title}>Enter your registered email</Text>
         <Text style={styles.text_footer}>Email</Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#05375a" size={20} />
+          <FontAwesome name="envelope-o" color="#05375a" size={20} />
 
           <TextInput
             placeholder="Your Email"
