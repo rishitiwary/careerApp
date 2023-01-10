@@ -21,8 +21,10 @@ import {AuthContext} from '../../components/AuthContext';
 const Login = () => {
   const {login, isLoading} = useContext(AuthContext);
   const navigation = useNavigation();
+  const [deviceId,setDeviceId]=useState(DeviceInfo.getUniqueId()._W);
+  
   const [data, setData] = useState({
-    deviceId:'',
+    deviceId:deviceId,
     email: '',
     password: '',
     check_textInputChange: false,
@@ -33,7 +35,6 @@ const Login = () => {
       setData({
         ...data,
         email: val,
-        deviceId:DeviceInfo.getUniqueId()._W,
         check_textInputChange: true,
       });
     } else {

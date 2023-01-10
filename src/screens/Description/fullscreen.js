@@ -28,15 +28,7 @@ const Fullscreen = ({route}) => {
   return (
     <View style={styles.fullscreen}>
       <StatusBar hidden={true} />
-      {activityIndicator ? (
-        <ActivityIndicator
-          color="#000099"
-          size="large"
-          style={styles.activityIndicator}
-        />
-      ) : (
-        ''
-      )}
+   
 
       <View style={styles.fullscreenVideo}>
         <YoutubePlayer

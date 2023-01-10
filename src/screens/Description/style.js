@@ -208,13 +208,15 @@ const styles = StyleSheet.create({
   },
   fullscreen: {
     flex: 1,
-    height:height,
-    width:width
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  
   },
   fullscreenVideo: {
     flex: 1,
-    height:height,
-    width:width
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    
    
     
   },

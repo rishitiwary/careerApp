@@ -22,12 +22,12 @@ export const BottomNavigation=()=>{
 </View>
 </TouchableOpacity>
 
-<TouchableOpacity onPress={()=>navigation.navigate('Chat')}>
+{/* <TouchableOpacity onPress={()=>navigation.navigate('Chat')}>
 <View style={styles.bottomIcon}>
 <FontAwesome name="comments" color={COLORS.white} size={26} />
 <Text style={styles.bottomText}>Chat</Text>
 </View>
-</TouchableOpacity>
+</TouchableOpacity> */}
 
 <TouchableOpacity onPress={()=>navigation.toggleDrawer()}>
 <View style={styles.bottomIcon}>
